@@ -61,16 +61,28 @@
 
                 <ul class="navbar-nav ms-auto">
 
-                    {% if page.url == "/" %}
+                    {% if page.url == "{{site.baseurl}}/" %}
                     <li class="nav-item active">
                         {% else %}
                     <li class="nav-item">
                         {% endif %}
-                        <a class="nav-link" href="{{ site.baseurl }}/index.html">arquivo</a>
+                        <a class="nav-link" href="{{ site.baseurl }}/">home</a>
                     </li>
 
+                    {% if page.url == "{{site.baseurl}}/archive/" %}
+                    <li class="nav-item active">
+                        {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ site.baseurl }}/about">sobre</a>
+                        {% endif %}
+                        <a class="nav-link" href="{{ site.baseurl }}/archive/">arquivo</a>
+                    </li>
+
+                    {% if page.url == "{{site.baseurl}}/about/" %}
+                    <li class="nav-item active">
+                        {% else %}
+                    <li class="nav-item">
+                        {% endif %}
+                        <a class="nav-link" href="{{ site.baseurl }}/about/">sobre</a>
                     </li>
 
                     {% include search-lunr.html %}
