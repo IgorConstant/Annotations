@@ -24,6 +24,8 @@ jobs:
       - name: Install dependencies
         run: |
           bundle config path vendor/bundle
+          # ensure lockfile supports linux runner
+          bundle lock --add-platform x86_64-linux || true
           bundle install
 
       - name: Build the site with Jekyll
