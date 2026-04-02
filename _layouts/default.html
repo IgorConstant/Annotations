@@ -112,31 +112,17 @@
 
         </div>
 
-        <!-- Categories Jumbotron
+        <!-- Explore Section
 ================================================== -->
-        <div class="jumbotron fortags">
-            <div class="d-md-flex h-100">
-                <div class="col-md-4  align-self-center text-center h-100">
-                    <div class="d-md-flex align-items-center justify-content-center h-100">
-                        <h2 class="d-md-block align-self-center py-1 font-weight-light">explorar. </h2>
-                    </div>
-                </div>
-                <div class="col-md-8 p-5 align-self-center text-center">
-                    {% assign categories_list = site.categories %}
-                    {% if categories_list.first[0] == null %}
-                    {% for category in categories_list %}
-                    <a class="mt-1 mb-1"
-                        href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{
-                        category | camelcase }} ({{ site.tags[category].size }})</a>
+        <div class="explore-section">
+            <div class="explore-inner">
+                <span class="explore-label">explorar.</span>
+                <div class="explore-cats">
+                    {% for category in site.categories %}
+                    <a class="explore-cat-pill" href="{{ site.baseurl }}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">
+                        {{ category[0] }}<span class="explore-cat-count">{{ category[1].size }}</span>
+                    </a>
                     {% endfor %}
-                    {% else %}
-                    {% for category in categories_list %}
-                    <a class="mt-1 mb-1"
-                        href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{
-                        category[0] | camelcase }} ({{ category[1].size }})</a>
-                    {% endfor %}
-                    {% endif %}
-                    {% assign categories_list = nil %}
                 </div>
             </div>
         </div>

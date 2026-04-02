@@ -5,58 +5,67 @@ title: Home
 
 {% if page.url == "/" %}
 
-<!-- Featured
-================================================== -->
-<section class="featured-posts">
-    <div class="section-title">
-        <h2><span>destaques.</span></h2>
-    </div>
-    <div class="row">
+{% assign hero_post = site.posts | first %}
+{% assign other_posts = site.posts | slice: 1, 8 %}
 
-    {% for post in site.posts %}
-
-        {% if post.featured == true %}
-
-            {% include featuredbox.html %}
-
+<!-- Hero Post -->
+<section class="home-hero">
+  {% assign author = site.authors[hero_post.author] %}
+  <a class="home-hero-link" href="{{ hero_post.url | relative_url }}">
+    <div class="home-hero-inner">
+      <div class="home-hero-image">
+        {% if hero_post.image %}
+          <img src="{% if hero_post.image contains '://' %}{{ hero_post.image }}{% else %}{{ hero_post.image | relative_url }}{% endif %}" alt="{{ hero_post.title }}">
         {% endif %}
-
-    {% endfor %}
-
+      </div>
+      <div class="home-hero-content">
+        <div class="home-hero-top">
+          {% for cat in hero_post.categories %}
+            <span class="archive-cat">{{ cat }}</span>
+          {% endfor %}
+          <span class="home-hero-label">destaque</span>
+        </div>
+        <h1 class="home-hero-title">{{ hero_post.title }}</h1>
+        <p class="home-hero-desc">{{ hero_post.description }}</p>
+        <span class="home-hero-date">{{ hero_post.date | date: "%d %b %Y" }}</span>
+      </div>
     </div>
+  </a>
 </section>
 
+<!-- Other Posts -->
+{% if other_posts.size > 0 %}
+<section class="home-posts">
+  <div class="home-section-title">mais textos.</div>
+  <div class="home-posts-grid">
+    {% for post in other_posts %}
+    <article class="home-post-card">
+      <a class="home-post-thumb" href="{{ post.url | relative_url }}">
+        {% if post.image %}
+          <img src="{% if post.image contains '://' %}{{ post.image }}{% else %}{{ post.image | relative_url }}{% endif %}" alt="{{ post.title }}">
+        {% endif %}
+      </a>
+      <div class="home-post-body">
+        <div class="home-post-meta">
+          {% for cat in post.categories %}
+            <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
+          {% endfor %}
+          <span class="archive-date">{{ post.date | date: "%d %b %Y" }}</span>
+        </div>
+        <h2 class="home-post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+        <p class="home-post-desc">{{ post.description }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
 {% endif %}
 
-{% comment %}
-<section class="recent-posts">
-
-    <div class="section-title">
-
-        <h2><span>todas as histórias.</span></h2>
-
-    </div>
-
-    <div class="row listrecent">
-
-        {% for post in paginator.posts %}
-
-        {% include postbox.html %}
-
-        {% endfor %}
-
-    </div>
-
-</section>
-{% endcomment %}
-
-
-{% comment %}
-<div class="bottompagination">
-<div class="pointerup"><i class="fa fa-caret-up"></i></div>
-<span class="navigation" role="navigation">
-    {% include pagination.html %}
-</span>
+<div class="home-archive-link">
+  <a href="{{ '/archive/' | relative_url }}">ver arquivo →</a>
 </div>
-{% endcomment %}
+
+{% endif %}
 

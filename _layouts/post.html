@@ -5,120 +5,101 @@ archive: false
 post_class: post-template
 ---
 
-<!-- Begin Article
-================================================== -->
-<div class="container">
-    <div class="row">
+{% assign author = site.authors[page.author] %}
 
-        <!-- Post Share -->
-        <div class="col-md-2 ps-0">
-
-        </div>
-
-        <!-- Post -->
-        {% assign author = site.authors[page.author] %}
-
-        <div class="col-md-9 flex-first flex-md-unordered">
-            <div class="mainheading">
-
-                <!-- Post Title -->
-                <h1 class="posttitle">{{ page.title }}</h1>
-                <small>Por: {{ author.display_name }}</small>
-                {% include share.html %}
-            </div>
-
-
-            <!-- Post Featured Image -->
-            {% if page.image %}
-
-            {% if site.lazyimages == "enabled" %}
-            <img class="featured-image img-fluid lazyimg"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII="
-                data-src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}"
-                alt="{{ page.title }}">
-            {% else %}
-            <img class="featured-image img-fluid" src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}"
-                alt="{{ page.title }}">
-            {% endif %}
-
-            {% endif %}
-            <!-- End Featured Image -->
-
-            <!-- Post Content -->
-            <div class="article-post">
-                <!-- Toc if any -->
-                {% if page.toc %}
-                {% if page.beforetoc %}
-                <p><em>{{page.beforetoc}}</em></p>
-                {% endif %}
-                <div class="toc mt-4 mb-4 lead">
-                    <h3 class="font-weight-bold">Summary</h3>
-                    {% include toc.html html=content %}
-                </div>
-                {% endif %}
-                <!-- End Toc -->
-                {{content}}
-            </div>
-
-
-            <!-- Post Date -->
-            <p>
-                <small>
-                    <span class="post-date"><time class="post-date" datetime="{{ page.date | date:" %Y-%m-%d" }}">{{
-                            page.date | date_to_string }}</time></span>
-                    {% if page.last_modified_at %}
-                    (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}"
-                        itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
-                    {% endif %}
-                </small>
-            </p>
-
-            <!-- Post Categories -->
-            <div class="after-post-cats">
-                <ul class="tags mb-4">
-                    {% assign sortedCategories = page.categories | sort %}
-                    {% for category in sortedCategories %}
-                    <li>
-                        <a class="smoothscroll" href="{{site.baseurl}}/categories#{{ category | replace: " "," -" }}">{{
-                            category }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!-- End Categories -->
-
-            <!-- Post Tags -->
-            <div class="after-post-tags">
-                <ul class="tags">
-                    {% assign sortedTags = page.tags | sort %}
-                    {% for tag in sortedTags %}
-                    <li>
-                        <a class="smoothscroll" href="{{site.baseurl}}/tags#{{ tag | replace: " "," -" }}">#{{ tag
-                            }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <!-- End Tags -->
-
-            <!-- Prev/Next -->
-            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
-                {% if page.previous.url %}
-                <a class="prev d-block col-md-6" href="{{ site.baseurl }}/{{page.previous.url}}"> &laquo;
-                    {{page.previous.title}}</a>
-                {% endif %}
-                {% if page.next.url %}
-                <a class="next d-block col-md-6 text-lg-right"
-                    href="{{ site.baseurl }}/{{page.next.url}}">{{page.next.title}} &raquo; </a>
-                {% endif %}
-                <div class="clearfix"></div>
-            </div>
-            <!-- End Categories -->
-
-        </div>
-        <!-- End Post -->
-
+<!-- Post Header -->
+<header class="post-header">
+    <div class="post-header-meta">
+        {% for cat in page.categories %}
+            <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
+        {% endfor %}
     </div>
+    <h1 class="post-header-title">{{ page.title }}</h1>
+    {% if page.description %}
+        <p class="post-header-desc">{{ page.description }}</p>
+    {% endif %}
+    <div class="post-header-info">
+        {% if author %}
+            <span>{{ author.display_name }}</span>
+            <span class="post-header-dot">·</span>
+        {% endif %}
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d %b %Y" }}</time>
+    </div>
+</header>
+
+<!-- Featured Image -->
+{% if page.image %}
+<div class="post-cover">
+    <img src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" alt="{{ page.title }}">
 </div>
-<!-- End Article
-================================================== -->
+{% endif %}
+
+<!-- Content -->
+<div class="post-content article-post">
+    {% if page.toc %}
+        {% if page.beforetoc %}<p><em>{{ page.beforetoc }}</em></p>{% endif %}
+        <div class="toc mt-4 mb-4 lead">
+            <h3>Summary</h3>
+            {% include toc.html html=content %}
+        </div>
+    {% endif %}
+    {{ content }}
+</div>
+
+<!-- Post Footer -->
+<footer class="post-footer">
+
+    <!-- Categories & Tags -->
+    {% if page.categories.size > 0 or page.tags.size > 0 %}
+    <div class="post-footer-tags">
+        {% for cat in page.categories %}
+            <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
+        {% endfor %}
+        {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/tags#{{ tag | slugify }}" class="post-tag">#{{ tag }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Share -->
+    <div class="post-share">
+        <span class="post-share-label">compartilhar:</span>
+        <a target="_blank"
+            href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.url | absolute_url }}"
+            onclick="window.open(this.href,'twitter-share','width=550,height=235');return false;"
+            title="Compartilhar no Twitter">
+            <i class="bi bi-twitter-x"></i>
+        </a>
+        <a target="_blank"
+            href="https://facebook.com/sharer.php?u={{ page.url | absolute_url }}"
+            onclick="window.open(this.href,'facebook-share','width=550,height=435');return false;"
+            title="Compartilhar no Facebook">
+            <i class="bi bi-facebook"></i>
+        </a>
+        <a target="_blank"
+            href="https://bsky.app/intent/compose?text={{ page.title }} {{ page.url | absolute_url }}"
+            onclick="window.open(this.href,'bluesky-share','width=550,height=435');return false;"
+            title="Compartilhar no Bluesky">
+            <i class="bi bi-bluesky"></i>
+        </a>
+    </div>
+
+    <!-- Prev/Next -->
+    <nav class="post-nav">
+        {% if page.previous.url %}
+        <a class="post-nav-item post-nav-prev" href="{{ site.baseurl }}{{ page.previous.url }}">
+            <span class="post-nav-label">← anterior</span>
+            <span class="post-nav-title">{{ page.previous.title }}</span>
+        </a>
+        {% else %}
+        <span></span>
+        {% endif %}
+        {% if page.next.url %}
+        <a class="post-nav-item post-nav-next" href="{{ site.baseurl }}{{ page.next.url }}">
+            <span class="post-nav-label">próximo →</span>
+            <span class="post-nav-title">{{ page.next.title }}</span>
+        </a>
+        {% endif %}
+    </nav>
+
+</footer>

@@ -3,22 +3,66 @@ layout: default
 title: arquivo
 ---
 
-<!-- Begin List Posts
-================================================== -->
-<section class="recent-posts">
-<div class="section-title">
-    <h2><span> {{ page.title }}</span></h2>
-</div>
-<div class="row listrecent">
+<section class="archive-page">
 
-{% for post in paginator.posts %}
+  <!-- Archive Header -->
+  <div class="archive-header">
+    <h1 class="archive-title">{{ page.title }}</h1>
+    <p class="archive-meta">
+      {% assign total = site.posts | size %}
+      {% assign all_cats = "" %}
+      {% for post in site.posts %}
+        {% for cat in post.categories %}
+          {% assign all_cats = all_cats | append: cat | append: "," %}
+        {% endfor %}
+      {% endfor %}
+      {% assign unique_cats = all_cats | split: "," | uniq | compact %}
+      {{ total }} {% if total == 1 %}texto{% else %}textos{% endif %} · {{ unique_cats | size }} {% if unique_cats.size == 1 %}categoria{% else %}categorias{% endif %}
+    </p>
+  </div>
 
-    {% include postbox.html %}
+  <!-- Category Filters -->
+  <div class="archive-filters">
+    <a href="{{ '/archive/' | relative_url }}" class="filter-btn active">todos</a>
+    {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
+    {% for cat in categories %}
+      {% assign cat_stripped = cat | strip %}
+      {% if cat_stripped != '' %}
+        <a href="{{ site.baseurl }}/category/{{ cat_stripped | slugify }}/" class="filter-btn">{{ cat_stripped }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
 
-{% endfor %}
+  <!-- Posts grouped by year -->
+  {% assign postsByYear = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+  {% for year in postsByYear %}
+  <div class="archive-year-group">
+    <div class="year-label">{{ year.name }}</div>
+    <div class="year-posts">
+      {% for post in year.items %}
+      {% assign author = site.authors[post.author] %}
+      <article class="archive-post-row">
+        <a class="archive-post-thumb" href="{{ post.url | relative_url }}">
+          {% if post.image %}
+            <img src="{% if post.image contains '://' %}{{ post.image }}{% else %}{{ post.image | relative_url }}{% endif %}" alt="{{ post.title }}">
+          {% endif %}
+        </a>
+        <div class="archive-post-info">
+          <div class="archive-post-meta">
+            <span class="archive-date">{{ post.date | date: "%d %b" }}</span>
+            {% for cat in post.categories %}
+              <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
+            {% endfor %}
+          </div>
+          <h2 class="archive-post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          <p class="archive-post-desc">{{ post.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
 
-</div>
 </section>
-
-<!-- pagination -->
-{% include pagination.html %}
