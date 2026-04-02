@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "THE PLASTIC GURU."
-description: "Você sabe que a coisa mais dificil é dizer adeus, para alguém que você ama."
+title: "THE MOUNTAIN."
+description: "Se você está vazio e aéreo e seu coração partido está cheio de raiva..."
 image: /assets/images/post-gorillaz-the-mountain.jpg
 date: 2026-02-26
 author: igor

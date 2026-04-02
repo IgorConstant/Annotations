@@ -478,6 +478,7 @@ permalink: /story/
         const titleY = imgY + imgSize + 72;
         ctx.fillStyle = '#1a1a1a';
         ctx.font = 'bold 52px system-ui, -apple-system, sans-serif';
+        ctx.textBaseline = 'top';
         wrapText(ctx, cardTitle.textContent, PAD, titleY, W - PAD * 2, 68, 3);
 
         // ── Descrição ────────────────────────────────────────
@@ -485,6 +486,7 @@ permalink: /story/
         ctx.fillStyle = '#777';
         ctx.font = 'italic 36px Georgia, serif';
         wrapText(ctx, cardDesc.textContent, PAD, descY, W - PAD * 2, 54, 3);
+        ctx.textBaseline = 'alphabetic';
 
         // ── Rodapé: autor ────────────────────────────────────
         ctx.fillStyle = '#ddd';
