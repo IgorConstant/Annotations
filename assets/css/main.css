@@ -1175,4 +1175,84 @@ pre.lineno {
   border-color: #185370;
 }
 
+/* ─── Reading Time ───────────────────────────────── */
+.reading-time {
+  color: #aaa;
+  font-size: 0.82rem;
+}
+
+/* ─── Footer RSS ─────────────────────────────────── */
+.footer-rss {
+  color: #999;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-rss:hover {
+  color: #185370;
+}
+
+/* ─── PIX / Buy me a coffee ──────────────────────── */
+.pix-section {
+  max-width: 680px;
+  margin: 3rem auto 1rem;
+  padding: 2rem;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.pix-icon {
+  font-size: 1.8rem;
+  color: #185370;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.pix-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.4rem;
+}
+
+.pix-desc {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.pix-btn {
+  display: inline-block;
+  padding: 0.45rem 1.4rem;
+  border: 1.5px solid #185370;
+  border-radius: 20px;
+  background: transparent;
+  color: #185370;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.pix-btn:hover {
+  background: #185370;
+  color: #fff;
+}
+
+.pix-btn--copied {
+  background: #185370;
+  color: #fff;
+}
+
+.pix-disclaimer {
+  font-size: 0.75rem;
+  color: #bbb;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
 /*# sourceMappingURL=main.css.map */

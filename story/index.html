@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>story cards · o som do silêncio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* ── Page Layout ─────────────────── */
+
+    .page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .page-title {
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #185370;
+    }
+
+    .page-subtitle {
+      font-size: 0.82rem;
+      color: #bbb;
+      letter-spacing: 0.04em;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── Post List ───────────────────── */
+
+    .post-list {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #ebebeb;
+      overflow: hidden;
+      position: sticky;
+      top: 1.5rem;
+      max-height: calc(100vh - 3rem);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search-wrap {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.82rem;
+      color: #333;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-wrap input:focus {
+      border-color: #185370;
+    }
+
+    #posts-ul {
+      list-style: none;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .post-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f8f8;
+      transition: background 0.15s;
+    }
+
+    .post-item:hover {
+      background: #fafafa;
+    }
+
+    .post-item.active {
+      background: #eef4f7;
+    }
+
+    .post-item-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 5px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #f0f0f0;
+    }
+
+    .post-item-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── Preview Area ────────────────── */
+
+    .preview-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ── Story Card ──────────────────── */
+
+    .story-card {
+      width: 360px;
+      height: 640px;
+      background: #fafafa;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      padding: 32px 28px 28px;
+      position: relative;
+    }
+
+    .card-top {
+      margin-bottom: 28px;
+    }
+
+    .card-blog-name {
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #185370;
+      display: block;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+    }
+
+    .card-date {
+      display: block;
+      font-size: 0.65rem;
+      color: #aaa;
+      text-transform: lowercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+    .card-divider {
+      width: 36px;
+      height: 2px;
+      background: #185370;
+      border-radius: 2px;
+      opacity: 0.35;
+    }
+
+    .card-image-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background: #ebebeb;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-desc {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 14px;
+      font-style: italic;
+      color: #777;
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      padding-top: 16px;
+      margin-top: auto;
+      border-top: 1px solid #ebebeb;
+    }
+
+    .card-author {
+      font-size: 0.68rem;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Empty state */
+    .card-empty .card-image-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-empty .card-img {
+      display: none;
+    }
+
+    .card-empty-icon {
+      font-size: 2rem;
+      color: #ddd;
+      display: none;
+    }
+
+    .card-empty .card-empty-icon {
+      display: block;
+    }
+
+    .card-empty .card-title {
+      color: #ccc;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+
+    .card-empty .card-desc {
+      color: #ddd;
+    }
+
+    /* ── Download Button ─────────────── */
+
+    .download-wrap {
+      width: 360px;
+    }
+
+    .download-btn {
+      width: 100%;
+      padding: 0.6rem 1.5rem;
+      background: transparent;
+      border: 1.5px solid #185370;
+      border-radius: 20px;
+      color: #185370;
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .download-btn:hover {
+      background: #185370;
+      color: #fff;
+    }
+
+    .download-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ── Responsive ──────────────────── */
+
+    @media (max-width: 720px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .post-list {
+        position: static;
+        max-height: 280px;
+      }
+
+      .story-card,
+      .download-wrap {
+        width: 100%;
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <header class="page-header">
+      <span class="page-title">o som do silêncio</span>
+      <span class="page-subtitle">story cards</span>
+    </header>
+
+    <div class="layout">
+
+      <aside class="post-list">
+        <div class="search-wrap">
+          <input type="text" id="search" placeholder="buscar post…" autocomplete="off">
+        </div>
+        <ul id="posts-ul">
+          
+          
+          <li class="post-item"
+              data-title="COM VÁRIOS SÓIS VOCÊ ILUMINA O CAMINHO"
+              data-desc="Quando cada dia começa"
+              data-image="/assets/images/post-touche-amore.webp"
+              data-author="igor"
+              data-date="2026-02-26"
+              data-year="2026">
+            <img src="/assets/images/post-touche-amore.webp" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">COM VÁRIOS SÓIS VOCÊ ILUMINA O CAMINHO</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="WHEEL OF FORTUNE"
+              data-desc="Porque a verdade é toda baseada no respeito…"
+              data-image="/assets/images/wheel-of-fortune.png"
+              data-author="igor"
+              data-date="2025-01-20"
+              data-year="2025">
+            <img src="/assets/images/wheel-of-fortune.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">WHEEL OF FORTUNE</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="WRECKING HOTEL ROOMS"
+              data-desc="Estarei lá nos seus sonhos e nesta canção…"
+              data-image="/assets/images/wrecking-hotel-rooms.jpeg"
+              data-author="igor"
+              data-date="2025-01-16"
+              data-year="2025">
+            <img src="/assets/images/wrecking-hotel-rooms.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">WRECKING HOTEL ROOMS</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="MORNING WALK."
+              data-desc="Muitos riachos que se transformam em rios…"
+              data-image="/assets/images/morning-walk.jpeg"
+              data-author="igor"
+              data-date="2025-01-13"
+              data-year="2025">
+            <img src="/assets/images/morning-walk.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">MORNING WALK.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="ALGO PELO QUAL EU MORRERIA."
+              data-desc="Então qual é a razão desse estresse? Estamos presos e não precisamos dessa porra de bagunça."
+              data-image="/assets/images/algo-pelo-qual-eu-morreria.png"
+              data-author="igor"
+              data-date="2024-10-18"
+              data-year="2024">
+            <img src="/assets/images/algo-pelo-qual-eu-morreria.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">ALGO PELO QUAL EU MORRERIA.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="LUGAR ALGUM."
+              data-desc="Se há uma escolha, existe história pra contar… Em cada memória, a chance de recomeçar."
+              data-image="/assets/images/lugar-algum.webp"
+              data-author="igor"
+              data-date="2024-08-22"
+              data-year="2024">
+            <img src="/assets/images/lugar-algum.webp" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">LUGAR ALGUM.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="APAGUE AS LUZES, PEQUENO LUTADOR."
+              data-desc="Antes de você pegar o que precisa, é melhor estar preparado pra pegá-los."
+              data-image="/assets/images/apague-as-luzes-pequeno-lutador.jpeg"
+              data-author="igor"
+              data-date="2024-08-20"
+              data-year="2024">
+            <img src="/assets/images/apague-as-luzes-pequeno-lutador.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">APAGUE AS LUZES, PEQUENO LUTADOR.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="MELHOR DO QUE PARECE."
+              data-desc="Nostalgia da novidade, saudades do futuro…"
+              data-image="/assets/images/melhor-do-que-parece.jpeg"
+              data-author="igor"
+              data-date="2024-08-06"
+              data-year="2024">
+            <img src="/assets/images/melhor-do-que-parece.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">MELHOR DO QUE PARECE.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="QUEM É AQUELE QUE NADA TEM?"
+              data-desc="Lembrei da voz, do quão fragéis somos nós… Por não sabermos caminhar."
+              data-image="/assets/images/quem-e-aquele-que-nada-tem.jpeg"
+              data-author="igor"
+              data-date="2024-08-03"
+              data-year="2024">
+            <img src="/assets/images/quem-e-aquele-que-nada-tem.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">QUEM É AQUELE QUE NADA TEM?</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="ALGO QUE NÃO MACHUQUE."
+              data-desc="O quanto você aguentou, medos, conflitos, complexos até chegar aqui?"
+              data-image="/assets/images/algo-que-nao-machuque.jpeg"
+              data-author="igor"
+              data-date="2024-08-02"
+              data-year="2024">
+            <img src="/assets/images/algo-que-nao-machuque.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">ALGO QUE NÃO MACHUQUE.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="ONE MORE TIME."
+              data-desc="Se eu cair em alguns pregos… Eu não irei falhar."
+              data-image="/assets/images/one-more-time.jpeg"
+              data-author="igor"
+              data-date="2024-07-17"
+              data-year="2024">
+            <img src="/assets/images/one-more-time.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">ONE MORE TIME.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="BENT BUT NOT BROKEN."
+              data-desc="A realidade é o que você quer ver…"
+              data-image="/assets/images/bent-but-not-broken.jpeg"
+              data-author="igor"
+              data-date="2024-07-16"
+              data-year="2024">
+            <img src="/assets/images/bent-but-not-broken.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">BENT BUT NOT BROKEN.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="DETROIT ROCK CITY."
+              data-desc="Você tem que perder a cabeça em Detroit Rock City"
+              data-image="/assets/images/detroit-rock-city.png"
+              data-author="igor"
+              data-date="2024-07-14"
+              data-year="2024">
+            <img src="/assets/images/detroit-rock-city.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">DETROIT ROCK CITY.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="LIFE ON MARS?"
+              data-desc="Tenho cicatrizes que não podem ser vistas…"
+              data-image="/assets/images/life-on-mars.jpeg"
+              data-author="igor"
+              data-date="2024-07-14"
+              data-year="2024">
+            <img src="/assets/images/life-on-mars.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">LIFE ON MARS?</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="CASTELOS DE GIZ."
+              data-desc="Mundos distantes, pedaços do céu… Em preto e branco escrevo palavras no papel."
+              data-image="/assets/images/castelos-de-giz.jpeg"
+              data-author="igor"
+              data-date="2024-07-12"
+              data-year="2024">
+            <img src="/assets/images/castelos-de-giz.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">CASTELOS DE GIZ.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="… LIKE A CLOCKWORK"
+              data-desc="Olhos cor de rosa colorem minha tristeza com um tom de vinho"
+              data-image="/assets/images/like-a-clockwork.jpeg"
+              data-author="igor"
+              data-date="2024-07-10"
+              data-year="2024">
+            <img src="/assets/images/like-a-clockwork.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">… LIKE A CLOCKWORK</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="MY SHAME IS TRUE."
+              data-desc="Quantos dias mais eu vou acordar quando não há nenhum lugar onde eu quero ir?"
+              data-image="/assets/images/my-shame-is-true.jpeg"
+              data-author="igor"
+              data-date="2024-07-10"
+              data-year="2024">
+            <img src="/assets/images/my-shame-is-true.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">MY SHAME IS TRUE.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="SOROCABA, 2021."
+              data-desc="Fones que gritam alto, mais um motivo para se sentir mais vivo"
+              data-image="/assets/images/sorocaba-2021.jpeg"
+              data-author="igor"
+              data-date="2024-07-08"
+              data-year="2024">
+            <img src="/assets/images/sorocaba-2021.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">SOROCABA, 2021.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="I WANT TO DISAPPEAR"
+              data-desc="Nada está no meu caminho e eu penso em você todos os dias."
+              data-image="/assets/images/i-want-to-disappear.jpeg"
+              data-author="igor"
+              data-date="2024-06-22"
+              data-year="2024">
+            <img src="/assets/images/i-want-to-disappear.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">I WANT TO DISAPPEAR</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="CLASSE DE 97."
+              data-desc="E a inocência se perdeu, se foram nossas referências, hoje em dia suas costas doem e já não temos paciência."
+              data-image="/assets/images/classe-de-97.jpeg"
+              data-author="igor"
+              data-date="2024-06-18"
+              data-year="2024">
+            <img src="/assets/images/classe-de-97.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">CLASSE DE 97.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="A MÁQUINA QUE SONHA COLORIDO."
+              data-desc="Vou experimentar, aceitar meu limite e o quanto posso suportar."
+              data-image="/assets/images/a-maquina-que-sonha-colorido.png"
+              data-author="igor"
+              data-date="2024-06-09"
+              data-year="2024">
+            <img src="/assets/images/a-maquina-que-sonha-colorido.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">A MÁQUINA QUE SONHA COLORIDO.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="CÉU E INFERNO."
+              data-desc="Essas palavras são meu coração e alma"
+              data-image="/assets/images/ceu-e-inferno.jpeg"
+              data-author="igor"
+              data-date="2024-05-31"
+              data-year="2024">
+            <img src="/assets/images/ceu-e-inferno.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">CÉU E INFERNO.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="TO THE END."
+              data-desc="Terno é o toque de alguém que você ama demais"
+              data-image="/assets/images/to-the-end.jpeg"
+              data-author="igor"
+              data-date="2024-05-31"
+              data-year="2024">
+            <img src="/assets/images/to-the-end.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">TO THE END.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="VALORES QUE SE BASEIAM EM ESCOLHER ESTAR OU NÃO PRESENTES, QUANDO TUDO PARECE DESMORONAR."
+              data-desc=""
+              data-image="/assets/images/valores-que-se-baseiam-em-escolher-estar-ou-nao-presentes-quando-tudo-parece-desmoronar.jpeg"
+              data-author="igor"
+              data-date="2024-05-19"
+              data-year="2024">
+            <img src="/assets/images/valores-que-se-baseiam-em-escolher-estar-ou-nao-presentes-quando-tudo-parece-desmoronar.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">VALORES QUE SE BASEIAM EM ESCOLHER ESTAR OU NÃO PRESENTES, QUANDO TUDO PARECE DESMORONAR.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="REALIDADE, VIDA E FÉ."
+              data-desc="A utopia está lá no horizonte."
+              data-image="/assets/images/realidade-vida-e-fe.jpeg"
+              data-author="igor"
+              data-date="2024-05-14"
+              data-year="2024">
+            <img src="/assets/images/realidade-vida-e-fe.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">REALIDADE, VIDA E FÉ.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="UM MILHÃO DE SENTIMENTOS TRANCADOS É UM COFRE DE TRISTEZAS."
+              data-desc="Finalmente o CPM 22 abre alas para um album cheio com sua nova formação! Uma formação e um disco que deram um novo gás para a banda."
+              data-image="/assets/images/um-milhao-de-sentimentos-trancados-e-um-cofre-de-tristezas.jpeg"
+              data-author="igor"
+              data-date="2024-05-06"
+              data-year="2024">
+            <img src="/assets/images/um-milhao-de-sentimentos-trancados-e-um-cofre-de-tristezas.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">UM MILHÃO DE SENTIMENTOS TRANCADOS É UM COFRE DE TRISTEZAS.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="BUT HERE WE ARE — FOO FIGHTERS"
+              data-desc="Acho que essa é a terceira vez que tento escrever algo sobre Foo Fighters… Bom minha história com a música do FF se deu muito a Best Of…"
+              data-image="/assets/images/but-here-we-are-foo-fighters.jpeg"
+              data-author="igor"
+              data-date="2024-04-20"
+              data-year="2024">
+            <img src="/assets/images/but-here-we-are-foo-fighters.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">BUT HERE WE ARE — FOO FIGHTERS</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="CHICO SCIENCE NAÇÃO ZUMBI"
+              data-desc="Em 1990, apareciam em Recife uma banda chamada Nação Zumbi… Mais especificamente como Chico Science e Nação Zumbi. Banda essa que foi a…"
+              data-image="/assets/images/chico-science-nacao-zumbi.jpeg"
+              data-author="igor"
+              data-date="2024-04-13"
+              data-year="2024">
+            <img src="/assets/images/chico-science-nacao-zumbi.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">CHICO SCIENCE NAÇÃO ZUMBI</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="ANIMALIA."
+              data-desc="Conheci o menores atos junto com o pense em meados de 2016 (?) não me recordo exatamente o período. Lembro basicamente que foi em uma…"
+              data-image="/assets/images/animalia.jpeg"
+              data-author="igor"
+              data-date="2024-03-20"
+              data-year="2024">
+            <img src="/assets/images/animalia.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">ANIMALIA.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="LABIRINTO DA MEMÓRIA."
+              data-desc="Tentando retomar o hábito de escrever algumas coisas. E além do mais, sobre bandas nacionais. Talvez pelo simples fato de serem mais fáceis…"
+              data-image="/assets/images/labirinto-da-memoria.jpeg"
+              data-author="igor"
+              data-date="2024-01-29"
+              data-year="2024">
+            <img src="/assets/images/labirinto-da-memoria.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">LABIRINTO DA MEMÓRIA.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="O QUE É FORTE PERMANECE VIVO."
+              data-desc="Cara, em meados de 2014 estava voltando a ouvir bandas que eu tinha parado de ouvir por motivos que talvez nem eu saiba ao certo… É…"
+              data-image="/assets/images/o-que-e-forte-permanece-vivo.jpeg"
+              data-author="igor"
+              data-date="2023-03-28"
+              data-year="2023">
+            <img src="/assets/images/o-que-e-forte-permanece-vivo.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">O QUE É FORTE PERMANECE VIVO.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="É o blink-182 no Braza!"
+              data-desc="Quando me pego olhando um pouco do meu passado, lembro basicamente das bandas que ouvia quando criança."
+              data-image="/assets/images/e-o-blink-182-no-braza.png"
+              data-author="igor"
+              data-date="2023-02-18"
+              data-year="2023">
+            <img src="/assets/images/e-o-blink-182-no-braza.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">É o blink-182 no Braza!</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="STAGE FOUR."
+              data-desc="Caraca, parando para lembrar da última vez que escrevi aqui e faz tempo… Nesse tempo, estive andando pelo YouTube e achei o Outbreak Fest…"
+              data-image="/assets/images/stage-four.jpeg"
+              data-author="igor"
+              data-date="2022-12-26"
+              data-year="2022">
+            <img src="/assets/images/stage-four.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">STAGE FOUR.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="UNDER A DYING SUN."
+              data-desc="Sinto que estou acordado hoje com essa memória que antes estava perdida..."
+              data-image="/assets/images/under-a-dying-sun.jpeg"
+              data-author="igor"
+              data-date="2022-08-20"
+              data-year="2022">
+            <img src="/assets/images/under-a-dying-sun.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">UNDER A DYING SUN.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="LIFE IN YOUR GLASS WORLD ."
+              data-desc="Bom, vamos nessa depois de um tempo sem colocar nada aqui… Por motivos de que estava sem um teclado rsrs."
+              data-image="/assets/images/life-in-your-glass-world.jpeg"
+              data-author="igor"
+              data-date="2022-08-13"
+              data-year="2022">
+            <img src="/assets/images/life-in-your-glass-world.jpeg" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">LIFE IN YOUR GLASS WORLD .</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="METEORA."
+              data-desc="Logo que completei 11 anos, comecei a me aventurar nos CD’s… Minha mãe tinha um rádio que se bobear era mais importante que eu mesmo…"
+              data-image="/assets/images/meteora.png"
+              data-author="igor"
+              data-date="2022-06-05"
+              data-year="2022">
+            <img src="/assets/images/meteora.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">METEORA.</span>
+          </li>
+          
+          <li class="post-item"
+              data-title="PROPER DOSE."
+              data-desc="Bom vamos começar com um dos meus discos favoritos… Proper Dose foi lançado em 2018 pela Pure Noise Records, com uma proposta diferente de…"
+              data-image="/assets/images/proper-dose.png"
+              data-author="igor"
+              data-date="2022-05-31"
+              data-year="2022">
+            <img src="/assets/images/proper-dose.png" alt="" class="post-item-thumb" loading="lazy">
+            <span class="post-item-title">PROPER DOSE.</span>
+          </li>
+          
+        </ul>
+      </aside>
+
+      <main class="preview-area">
+        <div id="card" class="story-card card-empty">
+          <div class="card-top">
+            <span class="card-blog-name">o som do silêncio</span>
+            <span id="card-date" class="card-date"></span>
+            <div class="card-divider"></div>
+          </div>
+          <div class="card-image-wrap">
+            <img id="card-img" src="" alt="" class="card-img">
+            <span class="card-empty-icon">♪</span>
+          </div>
+          <div class="card-text">
+            <h2 id="card-title" class="card-title">selecione um post ao lado</h2>
+            <p id="card-desc" class="card-desc">o card vai aparecer aqui para você visualizar antes de baixar.</p>
+          </div>
+          <div class="card-footer">
+            <span id="card-author" class="card-author"></span>
+          </div>
+        </div>
+
+        <div id="download-btn-wrap" class="download-wrap" style="display:none">
+          <button id="download-btn" class="download-btn">baixar PNG (1080 × 1920)</button>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    // Reveal download button only with ?mode=edit
+    if (new URLSearchParams(window.location.search).get('mode') === 'edit') {
+      document.getElementById('download-btn-wrap').style.display = 'block';
+    }
+
+    const card      = document.getElementById('card');
+    const cardImg   = document.getElementById('card-img');
+    const cardTitle = document.getElementById('card-title');
+    const cardDesc  = document.getElementById('card-desc');
+    const cardDate  = document.getElementById('card-date');
+    const cardAuth  = document.getElementById('card-author');
+    const items     = document.querySelectorAll('.post-item');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        card.classList.remove('card-empty');
+
+        cardImg.src           = item.dataset.image;
+        cardTitle.textContent = item.dataset.title;
+        cardDesc.textContent  = item.dataset.desc || '';
+        const fullDate = new Date(item.dataset.date + 'T00:00:00')
+          .toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+        cardDate.textContent  = fullDate;
+        cardAuth.textContent  = `por ${item.dataset.author} · ${item.dataset.year}`;
+      });
+    });
+
+    document.getElementById('search').addEventListener('input', function () {
+      const q = this.value.toLowerCase();
+      items.forEach(item => {
+        item.style.display = item.dataset.title.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+
+    document.getElementById('download-btn').addEventListener('click', async function () {
+      const btn = this;
+      btn.disabled = true;
+      btn.textContent = 'gerando…';
+
+      try {
+        const W = 1080, H = 1920;
+        const PAD = 80;
+
+        const canvas = document.createElement('canvas');
+        canvas.width  = W;
+        canvas.height = H;
+        const ctx = canvas.getContext('2d');
+
+        // Background
+        ctx.fillStyle = '#fafafa';
+        ctx.fillRect(0, 0, W, H);
+
+        // Load post image
+        const img = await loadImage(cardImg.src);
+
+        // ── Topo: nome do blog ───────────────────────────────
+        ctx.fillStyle = '#185370';
+        ctx.font = 'bold 38px system-ui, -apple-system, sans-serif';
+        ctx.fillText('o som do silêncio', PAD, 130);
+
+        // Data
+        ctx.fillStyle = '#aaa';
+        ctx.font = '28px system-ui, -apple-system, sans-serif';
+        ctx.fillText(cardDate.textContent, PAD, 172);
+
+        // Linha divisória
+        ctx.fillStyle = '#185370';
+        ctx.globalAlpha = 0.35;
+        ctx.fillRect(PAD, 192, 108, 5);
+        ctx.globalAlpha = 1;
+
+        // ── Imagem do post (quadrada, centralizada) ───────────
+        const imgSize = W - PAD * 2;
+        const imgY    = 260;
+        roundedImage(ctx, img, PAD, imgY, imgSize, imgSize, 28);
+
+        // ── Título ───────────────────────────────────────────
+        const titleY = imgY + imgSize + 72;
+        ctx.fillStyle = '#1a1a1a';
+        ctx.font = 'bold 52px system-ui, -apple-system, sans-serif';
+        wrapText(ctx, cardTitle.textContent, PAD, titleY, W - PAD * 2, 68, 3);
+
+        // ── Descrição ────────────────────────────────────────
+        const descY = titleY + 68 * Math.min(3, Math.ceil(ctx.measureText(cardTitle.textContent).width / (W - PAD * 2))) + 28;
+        ctx.fillStyle = '#777';
+        ctx.font = 'italic 36px Georgia, serif';
+        wrapText(ctx, cardDesc.textContent, PAD, descY, W - PAD * 2, 54, 3);
+
+        // ── Rodapé: autor ────────────────────────────────────
+        ctx.fillStyle = '#ddd';
+        ctx.fillRect(PAD, H - 120, W - PAD * 2, 1);
+        ctx.fillStyle = '#bbb';
+        ctx.font = '26px system-ui, -apple-system, sans-serif';
+        ctx.fillText(cardAuth.textContent.toUpperCase(), PAD, H - 80);
+
+        // Download
+        const slug = cardTitle.textContent
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, '');
+        const link = document.createElement('a');
+        link.download = `story-${slug}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao gerar imagem: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'baixar PNG (1080 × 1920)';
+      }
+    });
+
+    function loadImage(src) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload  = () => resolve(img);
+        img.onerror = () => reject(new Error('Falha ao carregar imagem: ' + src));
+        img.src = src;
+      });
+    }
+
+    function roundedImage(ctx, img, x, y, w, h, r) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      ctx.clip();
+
+      // object-fit: cover — corta sem esticar
+      const imgAspect    = img.naturalWidth / img.naturalHeight;
+      const targetAspect = w / h;
+      let sx, sy, sw, sh;
+      if (imgAspect > targetAspect) {
+        sh = img.naturalHeight;
+        sw = sh * targetAspect;
+        sx = (img.naturalWidth - sw) / 2;
+        sy = 0;
+      } else {
+        sw = img.naturalWidth;
+        sh = sw / targetAspect;
+        sx = 0;
+        sy = (img.naturalHeight - sh) / 2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+      ctx.restore();
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+      const words = text.split(' ');
+      let line = '';
+      let lineCount = 0;
+      for (let n = 0; n < words.length; n++) {
+        const test = line + words[n] + ' ';
+        if (ctx.measureText(test).width > maxWidth && n > 0) {
+          ctx.fillText(line.trim(), x, y);
+          line = words[n] + ' ';
+          y += lineHeight;
+          lineCount++;
+          if (lineCount >= maxLines - 1) {
+            // truncate remaining with ellipsis
+            const remaining = words.slice(n + 1).join(' ');
+            let truncated = words[n] + (remaining ? ' ' + remaining : '');
+            while (ctx.measureText(truncated + '…').width > maxWidth && truncated.length > 0) {
+              truncated = truncated.slice(0, -1);
+            }
+            ctx.fillText(truncated + '…', x, y);
+            return;
+          }
+        } else {
+          line = test;
+        }
+      }
+      ctx.fillText(line.trim(), x, y);
+    }
+  </script>
+</body>
+</html>
