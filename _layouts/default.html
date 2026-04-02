@@ -7,7 +7,11 @@
 
 
 
-    <title>{{ page.title }} | {{site.name}}</title>
+    {% if page.url == "/" %}
+    <title>{{ site.name }}</title>
+    {% else %}
+    <title>{{ page.title }} | {{ site.name }}</title>
+    {% endif %}
 
     {% seo %}
 

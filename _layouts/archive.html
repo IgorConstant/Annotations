@@ -5,13 +5,21 @@ title: arquivo
 
 <section class="archive-page">
 
+  {% if page.posts %}
+    {% assign all_posts = page.posts %}
+    {% assign current_cat = page.title %}
+  {% else %}
+    {% assign all_posts = site.posts %}
+    {% assign current_cat = nil %}
+  {% endif %}
+
   <!-- Archive Header -->
   <div class="archive-header">
     <h1 class="archive-title">{{ page.title }}</h1>
     <p class="archive-meta">
-      {% assign total = site.posts | size %}
+      {% assign total = all_posts | size %}
       {% assign all_cats = "" %}
-      {% for post in site.posts %}
+      {% for post in all_posts %}
         {% for cat in post.categories %}
           {% assign all_cats = all_cats | append: cat | append: "," %}
         {% endfor %}
@@ -23,18 +31,18 @@ title: arquivo
 
   <!-- Category Filters -->
   <div class="archive-filters">
-    <a href="{{ '/archive/' | relative_url }}" class="filter-btn active">todos</a>
+    <a href="{{ '/archive/' | relative_url }}" class="filter-btn{% unless current_cat %} active{% endunless %}">todos</a>
     {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
     {% for cat in categories %}
       {% assign cat_stripped = cat | strip %}
       {% if cat_stripped != '' %}
-        <a href="{{ site.baseurl }}/category/{{ cat_stripped | slugify }}/" class="filter-btn">{{ cat_stripped }}</a>
+        <a href="{{ site.baseurl }}/category/{{ cat_stripped | slugify }}/" class="filter-btn{% if current_cat == cat_stripped %} active{% endif %}">{{ cat_stripped }}</a>
       {% endif %}
     {% endfor %}
   </div>
 
   <!-- Posts grouped by year -->
-  {% assign postsByYear = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+  {% assign postsByYear = all_posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
   {% for year in postsByYear %}
   <div class="archive-year-group">
     <div class="year-label">{{ year.name }}</div>
