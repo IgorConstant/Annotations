@@ -361,14 +361,14 @@
           </li>
           
           <li class="post-item"
-              data-title="THE PLASTIC GURU."
-              data-desc="Você sabe que a coisa mais dificil é dizer adeus, para alguém que você ama."
+              data-title="THE MOUNTAIN."
+              data-desc="Se você está vazio e aéreo e seu coração partido está cheio de raiva..."
               data-image="/assets/images/post-gorillaz-the-mountain.jpg"
               data-author="igor"
               data-date="2026-02-26"
               data-year="2026">
             <img src="/assets/images/post-gorillaz-the-mountain.jpg" alt="" class="post-item-thumb" loading="lazy">
-            <span class="post-item-title">THE PLASTIC GURU.</span>
+            <span class="post-item-title">THE MOUNTAIN.</span>
           </li>
           
           <li class="post-item"
@@ -881,6 +881,7 @@
         const titleY = imgY + imgSize + 72;
         ctx.fillStyle = '#1a1a1a';
         ctx.font = 'bold 52px system-ui, -apple-system, sans-serif';
+        ctx.textBaseline = 'top';
         wrapText(ctx, cardTitle.textContent, PAD, titleY, W - PAD * 2, 68, 3);
 
         // ── Descrição ────────────────────────────────────────
@@ -888,6 +889,7 @@
         ctx.fillStyle = '#777';
         ctx.font = 'italic 36px Georgia, serif';
         wrapText(ctx, cardDesc.textContent, PAD, descY, W - PAD * 2, 54, 3);
+        ctx.textBaseline = 'alphabetic';
 
         // ── Rodapé: autor ────────────────────────────────────
         ctx.fillStyle = '#ddd';
