@@ -24,6 +24,8 @@ post_class: post-template
             <span class="post-header-dot">·</span>
         {% endif %}
         <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d %b %Y" }}</time>
+        <span class="post-header-dot">·</span>
+        <span class="reading-time">{{ content | number_of_words | divided_by: 200 | plus: 1 }} min de leitura</span>
     </div>
 </header>
 
@@ -44,6 +46,20 @@ post_class: post-template
         </div>
     {% endif %}
     {{ content }}
+</div>
+
+<!-- PIX / Buy me a coffee -->
+<div class="pix-section">
+    <i class="bi bi-cup-hot pix-icon"></i>
+    <p class="pix-title">gostou do texto?</p>
+    <p class="pix-desc">se quiser ajudar a manter o projeto de pé, qualquer valor é bem-vindo.</p>
+    <button class="pix-btn" onclick="
+        navigator.clipboard.writeText('6b07fc79-82d3-43fc-9937-7a04d6e0e4c8');
+        this.textContent = 'chave copiada ✓';
+        this.classList.add('pix-btn--copied');
+        setTimeout(() => { this.textContent = 'copiar chave pix'; this.classList.remove('pix-btn--copied'); }, 2500);
+    ">copiar chave pix</button>
+    <p class="pix-disclaimer">pix · qualquer banco · chave aleatória</p>
 </div>
 
 <!-- Post Footer -->
