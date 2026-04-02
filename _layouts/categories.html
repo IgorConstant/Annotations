@@ -1,23 +1,58 @@
 ---
-title: "Categories"
+title: "categorias"
 layout: default
 permalink: "/categories.html"
 ---
 
-<div class="row listrecent">
-{% for category in site.categories %}
-<div class="section-title col-md-12 mt-4">
-<h2 id="{{ category[0] | replace: " ","-" }}">categoria <span class="text-capitalize">{{ category[0] }}</span></h2>
-</div>
-{% assign pages_list = category[1] %}
-{% for post in pages_list %}
-{% if post.title != null %}
-{% if group == null or group == post.group %}
-{% include postbox.html %}
-{% endif %}
-{% endif %}
-{% endfor %}
-{% assign pages_list = nil %}
-{% assign group = nil %}
-{% endfor %}
-</div>
+<section class="archive-page">
+
+  <!-- Header -->
+  <div class="archive-header">
+    <h1 class="archive-title">categorias.</h1>
+    <p class="archive-meta">
+      {% assign total = site.posts | size %}
+      {{ total }} {% if total == 1 %}texto{% else %}textos{% endif %} · {{ site.categories | size }} categorias
+    </p>
+  </div>
+
+  <!-- Category jump nav -->
+  <div class="archive-filters">
+    {% assign sorted_cats = site.categories | sort %}
+    {% for category in sorted_cats %}
+      <a href="#cat-{{ category[0] | slugify }}" class="filter-btn">{{ category[0] }} <span class="cat-count">{{ category[1] | size }}</span></a>
+    {% endfor %}
+  </div>
+
+  <!-- Posts grouped by category -->
+  {% for category in sorted_cats %}
+  <div class="archive-year-group" id="cat-{{ category[0] | slugify }}">
+    <div class="year-label categories-label">
+      {{ category[0] }}
+      <span class="cat-group-count">{{ category[1] | size }}</span>
+    </div>
+    <div class="year-posts">
+      {% assign sorted_posts = category[1] | sort: 'date' | reverse %}
+      {% for post in sorted_posts %}
+      {% assign author = site.authors[post.author] %}
+      <article class="archive-post-row">
+        <a class="archive-post-thumb" href="{{ post.url | relative_url }}">
+          {% if post.image %}
+            <img src="{% if post.image contains '://' %}{{ post.image }}{% else %}{{ post.image | relative_url }}{% endif %}" alt="{{ post.title }}">
+          {% endif %}
+        </a>
+        <div class="archive-post-info">
+          <div class="archive-post-meta">
+            <span class="archive-date">{{ post.date | date: "%d %b %Y" }}</span>
+          </div>
+          <h2 class="archive-post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          <p class="archive-post-desc">{{ post.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+
+</section>
