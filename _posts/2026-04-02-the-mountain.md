@@ -27,14 +27,25 @@ A faixa-título prepara você para a imersão, quase como se estivesse prestes a
 ### Orange County
 É certamente um dos pontos mais altos do álbum. É a música que conversa com seu eu interno sobre o quão dolorosa é a perda; afinal, você sabe: a parte mais difícil de dizer adeus é dizer adeus para alguém que você ama.
 
+
+
+
 <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/br/album/orange-county-feat-bizarrap-kara-jackson-anoushka-shankar/1837237742?i=1837237867"></iframe>
+
+
+
 
 A música se mistura entre a suavidade dos assobios, a voz maravilhosa da cantora Kara Jackson e o sitar de Anoushka Shankar.
 
 ### The Manifesto
 Mesmo com uma raiz indiana, o Gorillaz ainda flerta muito com a América Latina através da participação do músico Trueno. Essas mudanças de ritmo e as melancolias "escondidas" em um balanço mais animado são pontos que sempre fico feliz em ouvir.
 
+
+
+
 <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/br/album/the-manifesto-feat-trueno-proof/1837237742?i=1837237878"></iframe>
+
+
 
 > Oh, the mountain, it is high
 > Yeah, the mountain's sad so the mountain cry
@@ -46,7 +57,13 @@ Mesmo com uma raiz indiana, o Gorillaz ainda flerta muito com a América Latina 
 
 The Plastic Guru já encaminha para o ritmo final do disco, trazendo Johnny Marr nas guitarras. Sinceramente, foi uma das minhas favoritas do álbum como um todo. O trecho:
 
+
+
+
 <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/br/album/the-plastic-guru-feat-johnny-marr-anoushka-shankar/1837237742?i=1837237882"></iframe>
+
+
+
 
 > Nós acreditamos no que escolhemos... isso não é a verdade?
 
