@@ -1,8 +1,10 @@
 # Site
 name: "o som do silêncio"
 title: "o som do silêncio"
-url: "https://www.osomdosilencio.com.br"   # change to your GitHub Pages domain or custom domain
+url: "https://osomdosilencio.com.br"
 description: "Tentando transparecer sentimento e vivências através da música."
+locale: pt_BR
+image: /assets/images/logo.png
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ""   

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: sobre.
-permalink: /about
+permalink: /about/
 comments: false
 ---
 
