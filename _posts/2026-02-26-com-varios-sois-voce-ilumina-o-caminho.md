@@ -5,7 +5,7 @@ description: "Quando cada dia começa"
 image: /assets/images/post-touche-amore.webp
 date: 2026-02-26
 author: igor
-featured: true
+featured: false
 categories: [post-hardcore]
 tags: []
 ---
