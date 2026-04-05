@@ -11,9 +11,6 @@ categories: [indie]
 
 * * *
 
-### QUEM É AQUELE QUE NADA TEM?
-
-Lembrei da voz, do quão fragéis somos nós… Por não sabermos caminhar.
 
 Olhando para uns anos atrás lembro que uma vez fui conversar com o Marcelo, sobre bandas e pedi que ele me apresentasse uma banda nova, foi uma época que estava descobrindo muitas bandas, graças a amizade que estava criando com ele.
 

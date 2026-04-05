@@ -11,10 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### ONE MORE TIME.
-
-Se eu cair em alguns pregos… Eu não irei falhar.
-
 22 de Março de 2024.
 
 Talvez esse tenha sido um dos dias mais felizes de toda a minha vida, finalmente eu estava ali embaixo de chuva para ver a banda que faz parte da minha vida desde que eu me conheço por gente.

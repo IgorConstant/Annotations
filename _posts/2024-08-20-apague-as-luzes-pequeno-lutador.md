@@ -11,10 +11,6 @@ categories: [punk]
 
 * * *
 
-### APAGUE AS LUZES, PEQUENO LUTADOR.
-
-Antes de você pegar o que precisa, é melhor estar preparado pra pegá-los.
-
 Bom, voltei a ativa… Estava pensando sobre qual banda escrever nesses últimos dias e no sábado tive um estalo, após ver um adesivo e um CD do Samiam no show dos meninos do Janeiro Industrial.
 
 Isso me fez lembrar o quão massa foi ver eles ano passado ao lado do meu caro amigo Guilherme. Lembrem-se comer comidas pesadas antes de um show, não é bom (Fizemos totalmente o oposto, indo no Copão da Paulista).

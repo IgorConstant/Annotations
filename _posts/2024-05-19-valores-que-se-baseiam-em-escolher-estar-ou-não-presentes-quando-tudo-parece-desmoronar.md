@@ -1,19 +1,15 @@
 ---
 layout: post
 title: "VALORES QUE SE BASEIAM EM ESCOLHER ESTAR OU NÃO PRESENTES, QUANDO TUDO PARECE DESMORONAR."
-description: ""
+description: "Meu corpo é uma máquina quebrada… E esse pedaço irregular não encontrará seu lugar, mas eu não consigo ficar quieto."
 image: /assets/images/valores-que-se-baseiam-em-escolher-estar-ou-nao-presentes-quando-tudo-parece-desmoronar.jpeg
 date: 2024-05-19
 author: igor
 featured: false
-categories: [post-hardcore]
+categories: [punk]
 ---
 
 * * *
-
-### VALORES QUE SE BASEIAM EM ESCOLHER ESTAR OU NÃO PRESENTES, QUANDO TUDO PARECE DESMORONAR.
-
-Meu corpo é uma máquina quebrada… E esse pedaço irregular não encontrará seu lugar, mas eu não consigo ficar quieto.
 
 O Hot Water Music no último dia 10/05 lançou seu novo trabalho (VOWS), segundo com meu **QUERIDASSO CHRIS CRESSWELL** na banda. Coincidentemente é o disco que complementa os quase 30 anos da banda de muito Post-Hardcore.
 

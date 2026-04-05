@@ -11,8 +11,6 @@ categories: [hardcore]
 
 * * *
 
-### UM MILHÃO DE SENTIMENTOS TRANCADOS É UM COFRE DE TRISTEZAS.
-
 Finalmente o CPM 22 abre alas para um album cheio com sua nova formação! Uma formação e um disco que deram um novo gás para a banda.
 
 O último trampo da banda havia sido o Suor e Sacrificio (2017) que é um disco bom, porém em mim gerava um sentimento que alguns membros não estavam no pique sabe? Mesmo produzindo um disco ótimo.

@@ -11,8 +11,6 @@ categories: [post-hardcore]
 
 * * *
 
-### STAGE FOUR.
-
 Caraca, parando para lembrar da última vez que escrevi aqui e faz tempo… Nesse tempo, estive andando pelo YouTube e achei o Outbreak Fest 2022 na Inglaterra… De longe uma das melhores apresentações ao vivo que pode se encontrar lá (Principalmente pelo festival disponibilizar os shows inteiros).
 
 Encontrei o show do Turnstile, Basement e também o Touché Amoré… Essa última que falo foi uma das minhas melhores descobertas musicais de 2022.

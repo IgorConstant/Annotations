@@ -11,9 +11,6 @@ categories: [indie]
 
 * * *
 
-### MELHOR DO QUE PARECE.
-
-Nostalgia da novidade, saudades do futuro…
 
 Se tem uma banda que aprendi a gostar em doses homeopáticas, certamente foi O Terno.
 

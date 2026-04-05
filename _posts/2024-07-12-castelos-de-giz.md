@@ -11,10 +11,6 @@ categories: [hardcore]
 
 * * *
 
-### CASTELOS DE GIZ.
-
-Mundos distantes, pedaços do céu… Em preto e branco escrevo palavras no papel.
-
 O ano era 2017 e eu estava revendo algumas bandas que não ouvia faz tempo e também retornando um pouco ao movimento RioCore, algo que eu tinha diminuído depois da pausa do Forfun.
 
 Logo ali, eu encontro essa obra de arte, que me acompanhou anos afinco, depois que eu descobri o Fausto, era como se eu estivesse ouvindo a melhor das melodias californianas, mas diretamente do Rio de Janeiro.

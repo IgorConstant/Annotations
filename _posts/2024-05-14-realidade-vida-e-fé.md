@@ -11,10 +11,6 @@ categories: [hardcore]
 
 * * *
 
-### REALIDADE, VIDA E FÉ.
-
-**A utopia está lá no horizonte.**
-
 **Caminho dez passos  
 E o horizonte corre dez passos  
 Por mais que eu caminhe, jamais alcançarei  

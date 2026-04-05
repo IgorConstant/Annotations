@@ -11,10 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### WRECKING HOTEL ROOMS
-
-Estarei lá nos seus sonhos e nesta canção…
-
 Uns meses atrás peguei para jogar Tony Hawks Pro Skater novamente e cara, como um jogo pode ter tanta música incrível reunida? Dentre as várias bandas que tem lá.
 
 Também tem o MXPX. Que foi uma banda formada em 92 lá na terra do Tio Sam.

@@ -11,10 +11,6 @@ categories: [hardcore]
 
 * * *
 
-### LABIRINTO DA MEMÓRIA.
-
-* * *
-
 Tentando retomar o hábito de escrever algumas coisas. E além do mais, sobre bandas nacionais. Talvez pelo simples fato de serem mais fáceis de ter um entendimento e também uma noção do que é cantado além dos riffs da guitarra.
 
 Tem uma banda que eu ouço desde 2004, mais especificamente é o Dead Fish. Em 2004 eles lançaram o Zero e Um e foi a partir daí que a coisa começou. Claro, mesmo tendo começado no zero e um, eu voltei várias vezes para revisitar a discografia anterior.

@@ -11,10 +11,6 @@ categories: [hardcore]
 
 * * *
 
-### MORNING WALK.
-
-Muitos riachos que se transformam em rios…
-
 Em 2005, talvez um dos melhores discos do HC foi lançado… Era ele o Morning Walk da banda Garage Fuzz (Santos — SP).
 
 Eu demorei muito a ter contato com o GF, para ser sincero. Só fui conhecer por meio de amigos que faziam uns convers do primeiro álbum dos caras.

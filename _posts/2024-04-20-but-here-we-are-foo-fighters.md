@@ -11,8 +11,6 @@ categories: [alternative-rock]
 
 * * *
 
-### BUT HERE WE ARE — FOO FIGHTERS
-
 Acho que essa é a terceira vez que tento escrever algo sobre Foo Fighters… Bom minha história com a música do FF se deu muito a Best Of You, assim como talvez muitos outros ouvintes da banda. Quem diria que os originários do Nirvana (Para quem não sabe, além do Dave, o Pat Smear também era do Nirvana), fariam músicas tão distantes do grunge? Talvez fosse algo para superar a dor da perda, tanto quanto eu tive que ouvir muito para lidar com as minhas perdas.
 
 Teve uma época que eu ouvia Foo Fighters na mesma proporção que eu bebia Coca-Cola. Então isso quer dizer que era muito.

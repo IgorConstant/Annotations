@@ -11,8 +11,6 @@ categories: [hardcore]
 
 * * *
 
-### O QUE É FORTE PERMANECE VIVO.
-
 Cara, em meados de 2014 estava voltando a ouvir bandas que eu tinha parado de ouvir por motivos que talvez nem eu saiba ao certo… É doideira como nosso gosto musical sempre vai se ampliando e vamos conseguindo encaixar mais e mais coisas nele.
 
 O Rancore tem um peso gigante na minha vida, sempre digo que se não fossem minhas músicas, meus dias seriam mais difíceis que o normal.

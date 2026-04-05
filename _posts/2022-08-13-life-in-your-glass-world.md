@@ -11,8 +11,6 @@ categories: [post-hardcore]
 
 * * *
 
-### LIFE IN YOUR GLASS WORLD.
-
 Bom, vamos nessa depois de um tempo sem colocar nada aqui… Por motivos de que estava sem um teclado rsrs.
 
 Hoje vim falar um pouco de Citizen. A banda formada em Toledo — Ohio já possui 4 discos no currículo. Mas hoje em especifico irei comentar um pouco do último… Como o próprio nome já diz: **Com a vida em seu mundo de vidro.**

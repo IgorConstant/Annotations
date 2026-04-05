@@ -11,12 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### CÉU E INFERNO.
-
-**Essas palavras são meu coração e alma**
-
-* * *
-
 Lá em 2005, quando o Guitar Hero 1 foi lançado eu acabei conhecendo a banda canadense SUM 41.
 
 A primeira música que ouvi foi logo de cara Fat Lip (All Killer, no Filler — 2001). Aquela intro da guitarra era um negócio marcante demais para a época juntamente do seu clipe extremamente enérgico. Que trazia muito da temática do adolescente poder ser o que ele quiser e não um padrão imposto da sociedade.

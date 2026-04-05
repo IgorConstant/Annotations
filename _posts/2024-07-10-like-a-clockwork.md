@@ -11,10 +11,6 @@ categories: [stoner-rock]
 
 * * *
 
-### … LIKE A CLOCKWORK
-
-Olhos cor de rosa colorem minha tristeza com um tom de vinho
-
 Eu disse que um dia voltaria para falar sobre o QOTSA, esse que foi meu primeiro show internacional e também uma banda que me acompanhou durante boa parte da minha vida.
 
 Porém eu tinha que falar do melhor trabalho desses caras, que é esse álbum que está em destaque aqui. Já perdi as contas do quanto conversei com o meu amigo Jonathan sobre QOTSA e como é uma das várias bandas que temos em comum.
