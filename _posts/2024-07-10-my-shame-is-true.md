@@ -11,10 +11,6 @@ categories: [punk]
 
 * * *
 
-### MY SHAME IS TRUE.
-
-Quantos dias mais eu vou acordar quando não há nenhum lugar onde eu quero ir?
-
 Finalmente, vou escrever sobre essa banda que não faz muito tempo que criei um amor único. Admito que só fui conhecer o Alkaline Trio quando o Matt se juntou ao blink e sinceramente após ouvir o My Shame Is True, foi empolgante pensar como poderia ser o primeiro disco dele com o Mark e o Travis (Felizmente o California veio)
 
 Lembro que a primeira música que eu vi, foi logo pelo clipe de I Wanne Be A Warhol que é a faixa número 2 do álbum.

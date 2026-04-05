@@ -11,8 +11,6 @@ categories: [punk]
 
 * * *
 
-### UNDER A DYING SUN.
-
 Sinto que estou acordado hoje com essa memória que antes estava perdida…
 
 Bom vamos nessa!

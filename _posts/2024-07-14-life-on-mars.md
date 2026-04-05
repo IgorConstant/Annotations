@@ -11,10 +11,6 @@ categories: [rock]
 
 * * *
 
-### LIFE ON MARS?
-
-Tenho cicatrizes que não podem ser vistas…
-
 O ano é 2014… E o Homer Simpson, iria apitar a copa do mundo no Brasil e ao mesmo tempo via ele cantando a poderosa e atemporal “Heroes” do David Bowie.
 
 A partir desse momento que fui conhecê-lo. Uma pena que muito tarde, pois 2 anos depois, ele viria a partir desse plano e deixar toda uma arte e um conceito como legado.

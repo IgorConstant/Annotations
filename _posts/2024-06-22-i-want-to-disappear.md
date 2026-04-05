@@ -11,10 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### I WANT TO DISAPPEAR
-
-Nada está no meu caminho e eu penso em você todos os dias.
-
 Depois de 6 anos o TSSF retorna com seu novo álbum. Quando eu comecei a escrever aqui sobre bandas, o PROPER DOSE, foi o primeiro que escrevi sobre como me sentia ouvindo aquele trampo dos caras.
 
 É estranho como a raiva pode ser um sentimento catalisador gigante para nós seres humanos. Seja para algo ruim ou bom, como utilizar da raiva para cuspir todo tipo de sentimento que estejamos sentindo em um determinado momento das nossas vidas.

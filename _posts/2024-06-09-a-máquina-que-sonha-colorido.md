@@ -11,10 +11,6 @@ categories: [rock-nacional]
 
 * * *
 
-### A MÁQUINA QUE SONHA COLORIDO.
-
-Vou experimentar, aceitar meu limite e o quanto posso suportar.
-
 Cara, o SK foi uma das bandas mais emblemáticas que pude ouvir nesses meus 28 anos de vida. E assim, como a grande maioria das outras bandas, comecei a ouvir bem mais mulequinho, quase que na mesma época que CPM22.
 
 Um dos momentos mais legais da minha relação com a banda, sem dúvidas foi a turnê de retorno e consequentemente de 20 anos e mais uma vez o Mario do Asteroid salvou esse rolê para a galera do interior.

@@ -11,8 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### PROPER DOSE — THE STORY SO FAR
-
 Vamos começar com um dos meus discos favoritos… Proper Dose foi lançado em 2018 pela Pure Noise Records, com uma proposta diferente de seus antecessores, talvez o disco mais melódico da banda.
 
 Como o próprio nome do disco diz, Proper Dose navega nos temas de depressão, abuso de substâncias e isolamento.

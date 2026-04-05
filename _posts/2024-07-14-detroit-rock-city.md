@@ -11,10 +11,6 @@ categories: [rock]
 
 * * *
 
-### DETROIT ROCK CITY.
-
-Você tem que perder a cabeça em Detroit Rock City
-
 O ano é 2010… Eu havia acabado de descobrir que pasmém, podia morrer. A notícia na época foi tão impactante na minha família que minha mãe não conseguiu nem me dar ela, foi meu tio que chegou apenas e disse com as suaves palavras: **“Então, você ta doente e pode morrer”**
 
 E foi assim que aquele meu ano, virou de ponta cabeça. Mas beleza, o que tem a ver essa música do KISS?

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CHICO SCIENCE NAÇÃO ZUMBI"
-description: "Em 1990, apareciam em Recife uma banda chamada Nação Zumbi… Mais especificamente como Chico Science e Nação Zumbi. Banda essa que foi a…"
+description: "Emergência! Um choque rápido ou o Recife morre de infarto! Não é preciso ser médico para saber que a maneira mais simples de parar o coração de um sujeito é obstruindo as suas veias..."
 image: /assets/images/chico-science-nacao-zumbi.jpeg
 date: 2024-04-13
 author: igor
@@ -10,8 +10,6 @@ categories: [manguebeat]
 ---
 
 * * *
-
-### CHICO SCIENCE E NAÇÃO ZUMBI
 
 Em 1990, apareciam em Recife uma banda chamada Nação Zumbi… Mais especificamente como Chico Science e Nação Zumbi. Banda essa que foi a pioneira no movimento do Manguebeat.
 

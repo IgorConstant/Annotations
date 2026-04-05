@@ -11,9 +11,6 @@ categories: [ska]
 
 * * *
 
-### WHEEL OF FORTUNE
-
-Porque a verdade é toda baseada no respeito…
 
 Em meados de 2019 talvez, eu voltei a ouvir SKA em uma proporção que nem eu imaginava que fosse rolar.
 

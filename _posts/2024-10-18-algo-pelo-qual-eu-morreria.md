@@ -11,10 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### ALGO PELO QUAL EU MORRERIA.
-
-Então qual é a razão desse estresse? Estamos presos e não precisamos dessa porra de bagunça.
-
 Acredito ser um dos poucos adultos nascidos nos anos 90 que não associou a música ‘No Cigar’ do Millencolin ao jogo Tony Hawk’s Pro Skater. Apesar de ter jogado a série na época, como não tinha um PS1 as músicas não fixaram tão bem, quanto depois de adulto.
 
 Mesmo que quando jogava, elas davam um gás e uma dinâmica totalmente diferente ao jogo.

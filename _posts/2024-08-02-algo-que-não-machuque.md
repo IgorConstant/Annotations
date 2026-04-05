@@ -11,10 +11,6 @@ categories: [post-hardcore]
 
 * * *
 
-### ALGO QUE NÃO MACHUQUE.
-
-O quanto você aguentou, medos, conflitos, complexos até chegar aqui?
-
 Eu conheci o Zander em 2017 e, logo de cara, tive a chance de vê-los ao vivo no Circadelica, um festival de música super bacana em Sorocaba, interior de SP. Um mistério até hoje o porquê daquela edição ter sido cancelada.
 
 ![](/assets/images/2024-08-02-algo-que-nao-machuque-1_VHMBWERpyzdJ6CWuV3mT-w.jpeg)Zander // Asteroid — Sorocaba/SP

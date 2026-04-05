@@ -11,10 +11,6 @@ categories: [punk]
 
 * * *
 
-### BENT BUT NOT BROKEN.
-
-A realidade é o que você quer ver…
-
 Considerando que eu sou uma pessoa que gosta bastante de álbuns ao vivo, esse eu posso dizer que é um dos melhores e consequentemente me deu muita vontade de ver o Face To Face.
 
 Bom sinal que eles tocam no Brasil no início de Novembro e promete ser um showzão.

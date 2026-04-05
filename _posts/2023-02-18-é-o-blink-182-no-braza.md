@@ -11,8 +11,6 @@ categories: [pop-punk]
 
 * * *
 
-### É o blink-182 no Braza!
-
 Quando me pego olhando um pouco do meu passado, lembro basicamente das bandas que ouvia quando criança.
 
 Ter um rádio que funcionava mais que a TV em casa, até tinha suas vantagens, menos na hora de assistir Cavaleiros do Zodíaco.
