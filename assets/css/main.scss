@@ -846,3 +846,193 @@
   margin-top: 0.75rem;
   margin-bottom: 0;
 }
+
+/* ─── Dark Mode Toggle Button ────────────────────── */
+
+.dark-mode-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Dark Mode Overrides ────────────────────────── */
+
+[data-bs-theme="dark"] {
+  // Navbar
+  .mediumnavigation {
+    background: rgba(18, 18, 18, 0.97) !important;
+  }
+
+  // Footer
+  .footer {
+    background: transparent;
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.44);
+  }
+
+  // Pre / code blocks
+  pre {
+    background: #1e1e1e;
+    border-color: #2a2a2a;
+    color: #ccc;
+  }
+
+  // Blockquotes
+  blockquote {
+    border-left-color: #444;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  // Home hero
+  .home-hero-inner {
+    background: #1e1e1e;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .home-hero-link:hover .home-hero-inner {
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .home-hero-title { color: #e8e8e8; }
+  .home-hero-desc { color: #999; }
+  .home-hero-label,
+  .home-hero-date { color: #555; }
+
+  // Home posts grid
+  .home-section-title { color: #e8e8e8; }
+
+  .home-post-title a {
+    color: #e0e0e0;
+    &:hover { color: #e0e0e0; }
+  }
+
+  .home-post-desc { color: #888; }
+
+  .home-archive-link a {
+    color: #555;
+    border-color: #2a2a2a;
+    &:hover {
+      color: #5a9ab5;
+      border-color: #5a9ab5;
+    }
+  }
+
+  // Archive page
+  .archive-meta { color: #555; }
+
+  .archive-post-row {
+    border-bottom-color: #2a2a2a;
+    &:first-child { border-top-color: #2a2a2a; }
+  }
+
+  .archive-date { color: #555; }
+
+  .archive-post-title a {
+    color: #e0e0e0;
+    &:hover { color: #e0e0e0; }
+  }
+
+  .archive-post-desc { color: #888; }
+
+  .filter-btn {
+    border-color: #2a2a2a;
+    color: #777;
+    &:hover, &.active {
+      background: #185370;
+      color: #fff;
+      border-color: #185370;
+    }
+  }
+
+  .year-label { color: #333; }
+
+  // Explore section
+  .explore-section {
+    background: #161616;
+    border-color: #2a2a2a;
+  }
+
+  .explore-label { color: #e8e8e8; }
+
+  .explore-cat-pill {
+    background: #1e1e1e;
+    border-color: #2a2a2a;
+    color: #bbb;
+    &:hover {
+      background: #185370;
+      border-color: #185370;
+      color: #fff;
+    }
+  }
+
+  .explore-cat-count { color: #555; }
+  .explore-cat-pill:hover .explore-cat-count { color: #aaa; }
+
+  // Categories page
+  .categories-label { color: #e0e0e0; }
+  .cat-count { background: #252525; color: #666; }
+
+  // Post page
+  .post-header-title { color: #e8e8e8; }
+  .post-header-desc { color: #888; }
+  .post-header-dot { color: #333; }
+  .post-content { color: #ccc; }
+  .post-footer { border-top-color: #2a2a2a; }
+
+  .post-share {
+    border-bottom-color: #2a2a2a;
+    a {
+      color: #555;
+      &:hover { color: #5a9ab5; }
+    }
+  }
+
+  .post-tag {
+    background: #1e1e1e;
+    color: #888;
+    &:hover { background: #2a2a2a; color: #aaa; }
+  }
+
+  .post-nav-title { color: #777; }
+  .post-nav-item:hover .post-nav-title { color: #e0e0e0; }
+
+  // About page
+  .about-title { color: #e8e8e8; }
+  .about-body { color: #bbb; }
+  .about-body strong { color: #e8e8e8; }
+  .about-photo { border-color: #2a2a2a; }
+  .about-footer { border-top-color: #2a2a2a; }
+  .about-cta {
+    color: #5a9ab5;
+    border-color: #2a2a2a;
+    &:hover { color: #7ab8d4; border-color: #5a9ab5; }
+  }
+
+  // PIX section
+  .pix-section {
+    background: #1e1e1e;
+    border-color: #2a2a2a;
+  }
+
+  .pix-title { color: #e8e8e8; }
+  .pix-desc { color: #888; }
+  .pix-disclaimer { color: #555; }
+
+  // Misc
+  .reading-time { color: #555; }
+  .footer-rss { color: #555; &:hover { color: #5a9ab5; } }
+
+  // Search input
+  .mediumnavigation .form-control {
+    border-color: rgba(255, 255, 255, 0.12);
+    &::placeholder { color: rgba(255, 255, 255, 0.35); }
+    &::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.35); }
+    &::-moz-placeholder { color: rgba(255, 255, 255, 0.35); }
+  }
+}
