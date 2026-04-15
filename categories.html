@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -8,11 +8,11 @@
 
 
     
-    <title>Categories | o som do silêncio</title>
+    <title>Categories | o som do silêncio.</title>
     
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Categories | o som do silêncio</title>
+<title>Categories | o som do silêncio.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Categories" />
 <meta property="og:locale" content="pt_BR" />
@@ -20,7 +20,7 @@
 <meta property="og:description" content="Tentando transparecer sentimento e vivências através da música." />
 <link rel="canonical" href="https://osomdosilencio.com.br/categories" />
 <meta property="og:url" content="https://osomdosilencio.com.br/categories" />
-<meta property="og:site_name" content="o som do silêncio" />
+<meta property="og:site_name" content="o som do silêncio." />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Categories" />
@@ -39,6 +39,15 @@
     <link href="/assets/css/main.css" rel="stylesheet">
 
     <script src="/assets/js/jquery.min.js"></script>
+
+    <!-- Apply saved theme immediately to prevent flash -->
+    <script>
+      (function () {
+        var saved = localStorage.getItem('theme');
+        var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', saved || preferred);
+      })();
+    </script>
 
 </head>
 
@@ -64,7 +73,7 @@
 
             <!-- Begin Logo -->
             <a class="navbar-brand" href="/">
-                o som do silêncio
+                o som do silêncio.
             </a>
             <!-- End Logo -->
 
@@ -97,7 +106,12 @@
                         <a class="nav-link" href="/about/">sobre</a>
                     </li>
 
-                    <script src="/assets/js/lunr.js"></script>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://cifras.osomdosilencio.com.br" target="_blank">cifras ↗</a>
+                    </li>
+
+                    <li class="nav-item d-flex align-items-center">
+                        <script src="/assets/js/lunr.js"></script>
 
 
 <style>
@@ -118,6 +132,13 @@
 </div>
 
 <script src="/assets/js/lunrsearchengine.js"></script>
+                    </li>
+
+                    <li class="nav-item d-flex align-items-center">
+                        <button id="darkModeToggle" class="dark-mode-toggle nav-link" title="Alternar tema">
+                            <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+                        </button>
+                    </li>
 
                 </ul>
 
@@ -145,7 +166,7 @@
     <h1 class="archive-title">categorias.</h1>
     <p class="archive-meta">
       
-      38 textos · 13 categorias
+      39 textos · 13 categorias
     </p>
   </div>
 
@@ -159,7 +180,7 @@
     
       <a href="#cat-hardcore" class="filter-btn">hardcore <span class="cat-count">8</span></a>
     
-      <a href="#cat-indie" class="filter-btn">indie <span class="cat-count">2</span></a>
+      <a href="#cat-indie" class="filter-btn">indie <span class="cat-count">3</span></a>
     
       <a href="#cat-manguebeat" class="filter-btn">manguebeat <span class="cat-count">1</span></a>
     
@@ -417,10 +438,28 @@
   <div class="archive-year-group" id="cat-indie">
     <div class="year-label categories-label">
       indie
-      <span class="cat-group-count">2</span>
+      <span class="cat-group-count">3</span>
     </div>
     <div class="year-posts">
       
+      
+      
+      <article class="archive-post-row">
+        <a class="archive-post-thumb" href="/gold-rush/">
+          
+            <img src="/assets/images/gold-rush.jpg" alt="GOLD RUSH.">
+          
+        </a>
+        <div class="archive-post-info">
+          <div class="archive-post-meta">
+            <span class="archive-date">15 Apr 2026</span>
+          </div>
+          <h2 class="archive-post-title">
+            <a href="/gold-rush/">GOLD RUSH.</a>
+          </h2>
+          <p class="archive-post-desc">Procurando ouro no meu bairro...</p>
+        </div>
+      </article>
       
       
       <article class="archive-post-row">
@@ -1069,7 +1108,7 @@
                     </a>
                     
                     <a class="explore-cat-pill" href="/categories#indie">
-                        indie<span class="explore-cat-count">2</span>
+                        indie<span class="explore-cat-count">3</span>
                     </a>
                     
                     <a class="explore-cat-pill" href="/categories#ska">
@@ -1086,7 +1125,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 text-center text-lg-left">
-                        Copyright © 2026 o som do silêncio
+                        Copyright © 2026 o som do silêncio.
                     </div>
                     <div class="col-md-6 col-sm-6 text-center text-lg-right">
                         <a href="/feed.xml" class="footer-rss" title="RSS Feed"><i class="bi bi-rss"></i> RSS</a>
@@ -1111,6 +1150,8 @@
     
 
     <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="/assets/js/darkmode.js"></script>
 
 </body>
 
