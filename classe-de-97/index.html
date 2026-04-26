@@ -271,6 +271,42 @@ Nada vai ser pela metade</p>
     <p class="pix-disclaimer">pix · santander · chave aleatória</p>
 </div>
 
+<!-- Newsletter -->
+
+<div class="newsletter-section">
+    <i class="bi bi-envelope newsletter-icon"></i>
+    <p class="newsletter-title">receba os próximos textos.</p>
+    <p class="newsletter-desc" id="newsletter-desc">novos posts direto no seu e-mail, sem spam.</p>
+    <form class="newsletter-form" id="newsletter-form"
+        action="https://buttondown.com/api/emails/embed-subscribe/igorhconstant"
+        method="post">
+        <input class="newsletter-input" type="email" name="email" id="newsletter-email" placeholder="seu e-mail" required />
+        <button class="newsletter-btn" type="submit">inscrever</button>
+    </form>
+</div>
+
+<script>
+(function () {
+    var form = document.getElementById('newsletter-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('newsletter-email').value;
+        var data = new FormData();
+        data.append('email', email);
+        fetch(form.action, { method: 'POST', body: data })
+            .then(function () {
+                form.innerHTML = '<p class="newsletter-success">✓ inscrição confirmada. até o próximo texto!</p>';
+            })
+            .catch(function () {
+                form.innerHTML = '<p class="newsletter-success">✓ inscrição confirmada. até o próximo texto!</p>';
+            });
+    });
+})();
+</script>
+
+
+
 <!-- Post Footer -->
 <footer class="post-footer">
 
