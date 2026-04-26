@@ -77,10 +77,14 @@ jobs:
                   "<a href=\"{{ unsubscribe_url }}\">Cancelar inscrição</a></p>"
               )
 
+              from datetime import datetime, timezone, timedelta
+              publish_date = (datetime.now(timezone.utc) + timedelta(minutes=5)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
               payload = json.dumps({
                   "subject": title,
                   "body": email_body,
-                  "status": "about_to_send"
+                  "status": "scheduled",
+                  "publish_date": publish_date
               })
 
               # Write payload to temp file to avoid shell escaping issues
@@ -109,14 +113,13 @@ jobs:
             -X POST "https://api.buttondown.email/v1/emails" \
             -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
             -H "Content-Type: application/json" \
-            -H "X-Buttondown-Live-Dangerously: true" \
             -d @/tmp/bd_payload.json)
 
           echo "HTTP Status: $HTTP_STATUS"
           cat /tmp/bd_response.json
 
           if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
-            echo "✅ Newsletter enviada com sucesso!"
+            echo "✅ Newsletter agendada com sucesso! (envia em ~5 minutos)"
           else
             echo "❌ Erro ao enviar newsletter (status $HTTP_STATUS)"
             exit 1
