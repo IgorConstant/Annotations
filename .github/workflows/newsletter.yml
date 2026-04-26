@@ -22,7 +22,8 @@ jobs:
           SITE_URL: "https://osomdosilencio.com.br"
         run: |
           python3 - <<'PYEOF'
-          import subprocess, sys, re, json, os
+          import subprocess, sys, re, json, os, urllib.request, urllib.error
+          from datetime import datetime, timezone, timedelta
 
           result = subprocess.run(
               ["git", "diff", "--name-status", "HEAD~1", "HEAD"],
@@ -77,7 +78,6 @@ jobs:
                   "<a href=\"{{ unsubscribe_url }}\">Cancelar inscrição</a></p>"
               )
 
-              from datetime import datetime, timezone, timedelta
               publish_date = (datetime.now(timezone.utc) + timedelta(minutes=5)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
               payload = json.dumps({
@@ -85,42 +85,22 @@ jobs:
                   "body": email_body,
                   "status": "scheduled",
                   "publish_date": publish_date
-              })
+              }).encode("utf-8")
 
-              # Write payload to temp file to avoid shell escaping issues
-              with open("/tmp/bd_payload.json", "w") as f:
-                  f.write(payload)
+              req = urllib.request.Request(
+                  "https://api.buttondown.email/v1/emails",
+                  data=payload,
+                  headers={
+                      "Authorization": f"Token {api_key}",
+                      "Content-Type": "application/json",
+                  },
+                  method="POST"
+              )
 
-              print(f"Enviando newsletter: {title}")
+              try:
+                  with urllib.request.urlopen(req) as resp:
+                      print(f"✅ Newsletter agendada: '{title}' (status {resp.status}) — envia em ~5 min")
+              except urllib.error.HTTPError as e:
+                  print(f"❌ Erro ao enviar newsletter: {e.code} {e.read().decode()}")
+                  sys.exit(1)
           PYEOF
-
-          # Use curl directly so X-Buttondown-Live-Dangerously is sent reliably
-          TITLE=$(python3 -c "
-          import re, sys
-          content = open(sys.argv[1]).read()
-          fm = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
-          if fm:
-              m = re.search(r'^title:\s*[\"\'"]?(.*?)[\"\'"]?\s*$', fm.group(1), re.MULTILINE)
-              print(m.group(1).strip() if m else '')
-          " "$(git diff --name-only HEAD~1 HEAD -- '_posts/*.md' | head -1)" 2>/dev/null || echo "")
-
-          if [ ! -f /tmp/bd_payload.json ]; then
-            echo "Nenhum post novo. Pulando."
-            exit 0
-          fi
-
-          HTTP_STATUS=$(curl -s -o /tmp/bd_response.json -w "%{http_code}" \
-            -X POST "https://api.buttondown.email/v1/emails" \
-            -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
-            -H "Content-Type: application/json" \
-            -d @/tmp/bd_payload.json)
-
-          echo "HTTP Status: $HTTP_STATUS"
-          cat /tmp/bd_response.json
-
-          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
-            echo "✅ Newsletter agendada com sucesso! (envia em ~5 minutos)"
-          else
-            echo "❌ Erro ao enviar newsletter (status $HTTP_STATUS)"
-            exit 1
-          fi
