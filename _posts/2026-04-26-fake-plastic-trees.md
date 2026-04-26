@@ -3,6 +3,7 @@ layout: post
 title: "FAKE PLASTIC TREES."
 description: "Um regador de plástico, para regar uma planta falsa em um planeta artificial."
 image: /assets/images/radiohead.webp
+image_credit: "Foto: Rogério Grassa"
 date: 2026-04-26
 author: igor
 featured: true
