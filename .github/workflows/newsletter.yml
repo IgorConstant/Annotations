@@ -21,10 +21,9 @@ jobs:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           SITE_URL: "https://osomdosilencio.com.br"
         run: |
-          python3 - <<'EOF'
-          import subprocess, sys, re, json, urllib.request, os
+          python3 - <<'PYEOF'
+          import subprocess, sys, re, json, os
 
-          # Find new .md files added in this push
           result = subprocess.run(
               ["git", "diff", "--name-status", "HEAD~1", "HEAD"],
               capture_output=True, text=True
@@ -39,13 +38,17 @@ jobs:
               print("Nenhum post novo detectado. Pulando envio.")
               sys.exit(0)
 
+          api_key = os.environ.get("BUTTONDOWN_API_KEY", "")
+          if not api_key:
+              print("BUTTONDOWN_API_KEY não configurada.")
+              sys.exit(1)
+
           for post_file in new_posts:
               print(f"Novo post encontrado: {post_file}")
 
               with open(post_file, "r", encoding="utf-8") as f:
                   content = f.read()
 
-              # Parse front matter
               fm_match = re.match(r"^---\n(.*?)\n---\n?(.*)", content, re.DOTALL)
               if not fm_match:
                   print(f"Front matter não encontrado em {post_file}. Pulando.")
@@ -60,50 +63,61 @@ jobs:
 
               title = get_field("title")
               description = get_field("description")
-
-              # Build post URL from filename (Jekyll permalink: /:title/)
               slug = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", os.path.basename(post_file).replace(".md", ""))
               post_url = f"{os.environ['SITE_URL']}/{slug}/"
 
-              # Build email body
-              email_body = f"""<h2>{title}</h2>
-          <p><em>{description}</em></p>
-          <hr>
-          {body_md[:800].replace(chr(10), '<br>')}
-          <br><br>
-          <p><a href="{post_url}">→ Leia o texto completo no blog</a></p>
-          <hr>
-          <p style="font-size:0.85em;color:#888;">Você está recebendo este e-mail porque se inscreveu em o som do silêncio.<br>
-          <a href="{{{{ unsubscribe_url }}}}">Cancelar inscrição</a></p>
-          """
-
-              # Send via Buttondown API
-              api_key = os.environ.get("BUTTONDOWN_API_KEY", "")
-              if not api_key:
-                  print("BUTTONDOWN_API_KEY não configurada. Pulando envio.")
-                  sys.exit(1)
+              email_body = (
+                  f"<h2>{title}</h2>"
+                  f"<p><em>{description}</em></p>"
+                  "<hr>"
+                  + body_md[:800].replace("\n", "<br>") +
+                  f"<br><br><p><a href=\"{post_url}\">→ Leia o texto completo no blog</a></p>"
+                  "<hr>"
+                  "<p style=\"font-size:0.85em;color:#888;\">Você está recebendo este e-mail porque se inscreveu em o som do silêncio.<br>"
+                  "<a href=\"{{ unsubscribe_url }}\">Cancelar inscrição</a></p>"
+              )
 
               payload = json.dumps({
                   "subject": title,
                   "body": email_body,
                   "status": "about_to_send"
-              }).encode("utf-8")
+              })
 
-              req = urllib.request.Request(
-                  "https://api.buttondown.email/v1/emails",
-                  data=payload,
-                  headers={
-                      "Authorization": f"Token {api_key}",
-                      "Content-Type": "application/json",
-                      "X-Buttondown-Live-Dangerously": "true"
-                  },
-                  method="POST"
-              )
+              # Write payload to temp file to avoid shell escaping issues
+              with open("/tmp/bd_payload.json", "w") as f:
+                  f.write(payload)
 
-              try:
-                  with urllib.request.urlopen(req) as resp:
-                      print(f"✅ Newsletter enviada para '{title}' (status {resp.status})")
-              except urllib.error.HTTPError as e:
-                  print(f"❌ Erro ao enviar newsletter: {e.code} {e.read().decode()}")
-                  sys.exit(1)
-          EOF
+              print(f"Enviando newsletter: {title}")
+          PYEOF
+
+          # Use curl directly so X-Buttondown-Live-Dangerously is sent reliably
+          TITLE=$(python3 -c "
+          import re, sys
+          content = open(sys.argv[1]).read()
+          fm = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+          if fm:
+              m = re.search(r'^title:\s*[\"\'"]?(.*?)[\"\'"]?\s*$', fm.group(1), re.MULTILINE)
+              print(m.group(1).strip() if m else '')
+          " "$(git diff --name-only HEAD~1 HEAD -- '_posts/*.md' | head -1)" 2>/dev/null || echo "")
+
+          if [ ! -f /tmp/bd_payload.json ]; then
+            echo "Nenhum post novo. Pulando."
+            exit 0
+          fi
+
+          HTTP_STATUS=$(curl -s -o /tmp/bd_response.json -w "%{http_code}" \
+            -X POST "https://api.buttondown.email/v1/emails" \
+            -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -H "X-Buttondown-Live-Dangerously: true" \
+            -d @/tmp/bd_payload.json)
+
+          echo "HTTP Status: $HTTP_STATUS"
+          cat /tmp/bd_response.json
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "✅ Newsletter enviada com sucesso!"
+          else
+            echo "❌ Erro ao enviar newsletter (status $HTTP_STATUS)"
+            exit 1
+          fi
