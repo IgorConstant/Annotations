@@ -33,6 +33,7 @@ post_class: post-template
 {% if page.image %}
 <div class="post-cover">
     <img src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" alt="{{ page.title }}">
+    {% if page.image_credit %}<p class="post-cover-credit">{{ page.image_credit }}</p>{% endif %}
 </div>
 {% endif %}
 
