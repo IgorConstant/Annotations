@@ -2,7 +2,7 @@
 layout: post
 title: "APRESSE-SE, ESTAMOS SONHANDO."
 description: "Nós éramos você antes mesmo de você existir…"
-image: /assets/images/apresse-se-estamos-sonhando.jpg
+image: /assets/images/m83.jpg
 date: 2026-04-26
 author: igor
 featured: true
@@ -10,7 +10,6 @@ categories: [eletrônico]
 tags: []
 ---
 
-Nós éramos você antes mesmo de você existir…
 
 Em algum momento oportuno da vida, você provavelmente ouviu M83 — o grupo francês que entregou trilhas sonoras incríveis no decorrer da carreira. Músicas como "Intro", "Midnight City", "Wait" e "Outro" fizeram parte de um contexto no qual todos estivemos inseridos de alguma forma.
 
