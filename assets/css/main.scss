@@ -484,13 +484,15 @@
   color: #ddd;
 }
 
+.post-cover-wrap {
+  margin-bottom: 3rem;
+}
+
 .post-cover {
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
-  margin-bottom: 3rem;
   max-height: 500px;
-  position: relative;
 }
 
 .post-cover img {
@@ -501,12 +503,11 @@
 }
 
 .post-cover-credit {
-  margin: 0;
-  padding: 0.3rem 0.6rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
   font-size: 0.75rem;
   color: #999;
   text-align: right;
-  background: transparent;
 }
 
 .post-content {

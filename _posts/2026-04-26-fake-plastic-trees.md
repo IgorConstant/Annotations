@@ -2,15 +2,13 @@
 layout: post
 title: "FAKE PLASTIC TREES."
 description: "Um regador de plástico, para regar uma planta falsa em um planeta artificial."
-image: /assets/images/radiohead.jpg
+image: /assets/images/radiohead.webp
 date: 2026-04-26
 author: igor
 featured: true
-categories: [alternativo]
+categories: [britpop]
 tags: []
 ---
-
-Um regador de plástico, para regar uma planta falsa em um planeta artificial.
 
 Ultimamente, tenho ouvido muito Britpop durante os meus dias em geral e talvez finalmente eu tenha chegado ao ponto de mudar apenas do Punk/Hardcore e meio que "encaixar" esses sons mais melancólicos na minha rotina.
 
