@@ -6,7 +6,7 @@ image: /assets/images/life-on-mars.jpeg
 date: 2024-07-14
 author: igor
 featured: false
-categories: [rock]
+categories: [britpop]
 ---
 
 * * *

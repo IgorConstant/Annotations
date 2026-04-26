@@ -6,7 +6,7 @@ image: /assets/images/a-maquina-que-sonha-colorido.png
 date: 2024-06-09
 author: igor
 featured: false
-categories: [rock-nacional]
+categories: [hardcore]
 ---
 
 * * *
