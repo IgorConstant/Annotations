@@ -1,0 +1,14 @@
+{% if site.buttondown_username != "" %}
+<div class="newsletter-section">
+    <i class="bi bi-envelope newsletter-icon"></i>
+    <p class="newsletter-title">receba os próximos textos.</p>
+    <p class="newsletter-desc">novos posts direto no seu e-mail, sem spam.</p>
+    <form class="newsletter-form"
+        action="https://buttondown.com/api/emails/embed-subscribe/{{ site.buttondown_username }}"
+        method="post"
+        target="_blank">
+        <input class="newsletter-input" type="email" name="email" placeholder="seu e-mail" required />
+        <button class="newsletter-btn" type="submit">inscrever</button>
+    </form>
+</div>
+{% endif %}
