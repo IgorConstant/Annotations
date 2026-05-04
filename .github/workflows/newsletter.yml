@@ -21,7 +21,8 @@ jobs:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           SITE_URL: "https://osomdosilencio.com.br"
         run: |
-          python3 - <<'PYEOF'
+          # Write the Python script to a temporary file and execute it. This avoids heredoc parsing issues
+          cat > send_newsletter.py <<'PYEOF'
           import subprocess, sys, re, json, os, urllib.request, urllib.error
           from datetime import datetime, timezone, timedelta
 
@@ -104,3 +105,4 @@ jobs:
                   print(f"❌ Erro ao enviar newsletter: {e.code} {e.read().decode()}")
                   sys.exit(1)
           PYEOF
+          python3 send_newsletter.py
