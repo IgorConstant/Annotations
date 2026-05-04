@@ -1,0 +1,82 @@
+import subprocess, sys, re, json, os, urllib.request, urllib.error
+from datetime import datetime, timezone, timedelta
+
+# Detect changed files between last two commits
+result = subprocess.run(
+    ["git", "diff", "--name-status", "HEAD~1", "HEAD"],
+    capture_output=True, text=True
+)
+new_posts = [
+    line.split("\t")[1]
+    for line in result.stdout.splitlines()
+    if line.startswith("A\t") and line.endswith(".md") and "_posts/" in line
+]
+
+if not new_posts:
+    print("Nenhum post novo detectado. Pulando envio.")
+    sys.exit(0)
+
+api_key = os.environ.get("BUTTONDOWN_API_KEY", "")
+if not api_key:
+    print("BUTTONDOWN_API_KEY não configurada.")
+    sys.exit(1)
+
+for post_file in new_posts:
+    print(f"Novo post encontrado: {post_file}")
+
+    with open(post_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    fm_match = re.match(r"^---\n(.*?)\n---\n?(.*)", content, re.DOTALL)
+    if not fm_match:
+        print(f"Front matter não encontrado em {post_file}. Pulando.")
+        continue
+
+    fm_raw = fm_match.group(1)
+    body_md = fm_match.group(2).strip()
+
+    def get_field(field):
+        m = re.search(rf'^{field}:\s*["\']?(.*?)["\']?\s*$', fm_raw, re.MULTILINE)
+        return m.group(1).strip() if m else ""
+
+    title = get_field("title")
+    description = get_field("description")
+    slug = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", os.path.basename(post_file).replace(".md", ""))
+    post_url = f"{os.environ.get('SITE_URL','').rstrip('/')}/{slug}/"
+
+    email_body = (
+        f"<h2>{title}</h2>"
+        f"<p><em>{description}</em></p>"
+        "<hr>"
+        + body_md[:800].replace("\n", "<br>") +
+        f"<br><br><p><a href=\"{post_url}\">→ Leia o texto completo no blog</a></p>"
+        "<hr>"
+        "<p style=\"font-size:0.85em;color:#888;\">Você está recebendo este e-mail porque se inscreveu em o som do silêncio.<br>"
+        "<a href=\"{{ unsubscribe_url }}\">Cancelar inscrição</a></p>"
+    )
+
+    publish_date = (datetime.now(timezone.utc) + timedelta(minutes=5)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    payload = json.dumps({
+        "subject": title,
+        "body": email_body,
+        "status": "scheduled",
+        "publish_date": publish_date
+    }).encode("utf-8")
+
+    req = urllib.request.Request(
+        "https://api.buttondown.email/v1/emails",
+        data=payload,
+        headers={
+            "Authorization": f"Token {api_key}",
+            "Content-Type": "application/json",
+        },
+        method="POST"
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            print(f"✅ Newsletter agendada: '{title}' (status {resp.status}) — envia em ~5 min")
+    except urllib.error.HTTPError as e:
+        print(f"❌ Erro ao enviar newsletter: {e.code} {e.read().decode()}")
+        sys.exit(1)
