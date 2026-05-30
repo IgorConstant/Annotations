@@ -167,23 +167,23 @@
 <!-- Hero Post -->
 <section class="home-hero">
   
-  <a class="home-hero-link" href="/tantas-cosas-buenas/">
+  <a class="home-hero-link" href="/danger-days/">
     <div class="home-hero-inner">
       <div class="home-hero-image">
         
-          <img src="/assets/images/tantas-cosas-buenas.jpg" alt="TANTAS COSAS BUENAS.">
+          <img src="/assets/images/danger-days.jpg" alt="DANGER DAYS.">
         
       </div>
       <div class="home-hero-content">
         <div class="home-hero-top">
           
-            <span class="archive-cat">latino-americana</span>
+            <span class="archive-cat">emo</span>
           
           <span class="home-hero-label">destaque</span>
         </div>
-        <h1 class="home-hero-title">TANTAS COSAS BUENAS.</h1>
-        <p class="home-hero-desc">No es difícil de entender… Todo esto se va a perder.</p>
-        <span class="home-hero-date">04 May 2026</span>
+        <h1 class="home-hero-title">DANGER DAYS.</h1>
+        <p class="home-hero-desc">E você só vive para sempre nas luzes que você faz...</p>
+        <span class="home-hero-date">22 May 2026</span>
       </div>
     </div>
   </a>
@@ -194,6 +194,26 @@
 <section class="home-posts">
   <div class="home-section-title">mais textos.</div>
   <div class="home-posts-grid">
+    
+    <article class="home-post-card">
+      <a class="home-post-thumb" href="/tantas-cosas-buenas/">
+        
+          <img src="/assets/images/tantas-cosas-buenas.jpg" alt="TANTAS COSAS BUENAS.">
+        
+      </a>
+      <div class="home-post-body">
+        <div class="home-post-meta">
+          
+            <a href="/category/latino-americana/" class="archive-cat">latino-americana</a>
+          
+          <span class="archive-date">04 May 2026</span>
+        </div>
+        <h2 class="home-post-title">
+          <a href="/tantas-cosas-buenas/">TANTAS COSAS BUENAS.</a>
+        </h2>
+        <p class="home-post-desc">No es difícil de entender… Todo esto se va a perder.</p>
+      </div>
+    </article>
     
     <article class="home-post-card">
       <a class="home-post-thumb" href="/fake-plastic-trees/">
@@ -335,63 +355,8 @@
       </div>
     </article>
     
-    <article class="home-post-card">
-      <a class="home-post-thumb" href="/wrecking-hotel-rooms/">
-        
-          <img src="/assets/images/wrecking-hotel-rooms.jpeg" alt="WRECKING HOTEL ROOMS">
-        
-      </a>
-      <div class="home-post-body">
-        <div class="home-post-meta">
-          
-            <a href="/category/pop-punk/" class="archive-cat">pop-punk</a>
-          
-          <span class="archive-date">16 Jan 2025</span>
-        </div>
-        <h2 class="home-post-title">
-          <a href="/wrecking-hotel-rooms/">WRECKING HOTEL ROOMS</a>
-        </h2>
-        <p class="home-post-desc">Estarei lá nos seus sonhos e nesta canção…</p>
-      </div>
-    </article>
-    
   </div>
 </section>
-
-
-
-<div class="newsletter-section">
-    <i class="bi bi-envelope newsletter-icon"></i>
-    <p class="newsletter-title">receba os próximos textos.</p>
-    <p class="newsletter-desc" id="newsletter-desc">novos posts direto no seu e-mail, sem spam.</p>
-    <form class="newsletter-form" id="newsletter-form"
-        action="https://buttondown.com/api/emails/embed-subscribe/igorhconstant"
-        method="post">
-        <input class="newsletter-input" type="email" name="email" id="newsletter-email" placeholder="seu e-mail" required />
-        <button class="newsletter-btn" type="submit">inscrever</button>
-    </form>
-</div>
-
-<script>
-(function () {
-    var form = document.getElementById('newsletter-form');
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = document.getElementById('newsletter-email').value;
-        var data = new FormData();
-        data.append('email', email);
-        fetch(form.action, { method: 'POST', body: data })
-            .then(function () {
-                form.innerHTML = '<p class="newsletter-success">✓ inscrição confirmada. até o próximo texto!</p>';
-            })
-            .catch(function () {
-                form.innerHTML = '<p class="newsletter-success">✓ inscrição confirmada. até o próximo texto!</p>';
-            });
-    });
-})();
-</script>
-
 
 
 <div class="home-archive-link">
@@ -467,6 +432,10 @@
                     
                     <a class="explore-cat-pill" href="/categories#latino-americana">
                         latino-americana<span class="explore-cat-count">1</span>
+                    </a>
+                    
+                    <a class="explore-cat-pill" href="/categories#emo">
+                        emo<span class="explore-cat-count">1</span>
                     </a>
                     
                 </div>
