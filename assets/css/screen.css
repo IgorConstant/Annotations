@@ -929,3 +929,30 @@ iframe {
     line-height: 1;
   }
 }
+
+/* When the hamburger menu is open (mobile), apply spacing and subtle highlight in both themes */
+@media (max-width: 767px) {
+  .mediumnavigation .navbar-collapse.show .bd-search {
+    margin-right: 0.6rem;
+  }
+
+  .mediumnavigation .navbar-collapse.show .dark-mode-toggle {
+    margin-left: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    /* subtle, theme-agnostic highlight */
+    background: rgba(255,255,255,0.02);
+    color: inherit;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: background .18s ease, transform .12s ease;
+  }
+
+  .mediumnavigation .navbar-collapse.show .dark-mode-toggle:hover {
+    background: rgba(0,0,0,0.04);
+    transform: translateY(-1px);
+  }
+
+  .mediumnavigation .navbar-collapse.show .dark-mode-toggle i {
+    font-size: 1.1rem;
+  }
+}
