@@ -902,3 +902,30 @@ iframe {
     opacity: 0;
     transition: opacity .25s;
 }
+
+/* Dark mode: spacing between search and dark-mode icon on mobile + subtle, minimal highlight */
+@media (max-width: 767px) {
+  html[data-bs-theme="dark"] .mediumnavigation .bd-search {
+    margin-right: 0.6rem;
+  }
+
+  html[data-bs-theme="dark"] .mediumnavigation .dark-mode-toggle {
+    margin-left: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background .18s ease, transform .12s ease;
+  }
+
+  html[data-bs-theme="dark"] .mediumnavigation .dark-mode-toggle:hover {
+    background: rgba(255,255,255,0.07);
+    transform: translateY(-1px);
+  }
+
+  html[data-bs-theme="dark"] .mediumnavigation .dark-mode-toggle i {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+}
