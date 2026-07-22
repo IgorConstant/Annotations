@@ -8,7 +8,7 @@ image: /assets/images/logo.png
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ""   
-google_analytics: ''
+google_analytics: 'G-38XF4LJFKS'
 disqus: ''
 include: ["_pages"]
 permalink: /:title/
