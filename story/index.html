@@ -991,10 +991,28 @@
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, '-')
           .replace(/^-|-$/g, '');
-        const link = document.createElement('a');
-        link.download = `story-${slug}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+        const dataUrl = canvas.toDataURL('image/png');
+
+        // Detect iOS (iPhone/iPad/iPod). Mobile Safari has limited support for the
+        // download attribute on <a>. Open the image in a new window so the user
+        // can long-press to save it instead.
+        const isIOS = /iP(hone|od|ad)/.test(navigator.userAgent);
+        if (isIOS) {
+          const w = window.open();
+          if (w) {
+            w.document.write('<title>story image</title><img src="' + dataUrl + '" style="max-width:100%;">');
+            w.document.close();
+            w.focus();
+          } else {
+            // Fallback: navigate to the data URL so user can save from the current tab
+            window.location.href = dataUrl;
+          }
+        } else {
+          const link = document.createElement('a');
+          link.download = `story-${slug}.png`;
+          link.href = dataUrl;
+          link.click();
+        }
       } catch (err) {
         console.error(err);
         alert('Erro ao gerar imagem: ' + err.message);
