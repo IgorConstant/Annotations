@@ -11,17 +11,17 @@ post_class: post-template
 <header class="post-header">
     <div class="post-header-meta">
         {% for cat in page.categories %}
-            <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
+        <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
         {% endfor %}
     </div>
     <h1 class="post-header-title">{{ page.title }}</h1>
     {% if page.description %}
-        <p class="post-header-desc">{{ page.description }}</p>
+    <p class="post-header-desc">{{ page.description }}</p>
     {% endif %}
     <div class="post-header-info">
         {% if author %}
-            <span>{{ author.display_name }}</span>
-            <span class="post-header-dot">·</span>
+        <span>{{ author.display_name }}</span>
+        <span class="post-header-dot">·</span>
         {% endif %}
         <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d %b %Y" }}</time>
         <span class="post-header-dot">·</span>
@@ -33,7 +33,8 @@ post_class: post-template
 {% if page.image %}
 <figure class="post-cover-wrap">
     <div class="post-cover">
-        <img src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" alt="{{ page.title }}">
+        <img src="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}"
+            alt="{{ page.title }}">
     </div>
     {% if page.image_credit %}<figcaption class="post-cover-credit">{{ page.image_credit }}</figcaption>{% endif %}
 </figure>
@@ -42,11 +43,11 @@ post_class: post-template
 <!-- Content -->
 <div class="post-content article-post">
     {% if page.toc %}
-        {% if page.beforetoc %}<p><em>{{ page.beforetoc }}</em></p>{% endif %}
-        <div class="toc mt-4 mb-4 lead">
-            <h3>Summary</h3>
-            {% include toc.html html=content %}
-        </div>
+    {% if page.beforetoc %}<p><em>{{ page.beforetoc }}</em></p>{% endif %}
+    <div class="toc mt-4 mb-4 lead">
+        <h3>Summary</h3>
+        {% include toc.html html=content %}
+    </div>
     {% endif %}
     {{ content }}
 </div>
@@ -62,7 +63,7 @@ post_class: post-template
         this.classList.add('pix-btn--copied');
         setTimeout(() => { this.textContent = 'copiar chave pix'; this.classList.remove('pix-btn--copied'); }, 2500);
     ">copiar chave pix</button>
-    <p class="pix-disclaimer">pix · santander · chave aleatória</p>
+    <p class="pix-disclaimer">pix · chave aleatória</p>
 </div>
 
 <!-- Post Footer -->
@@ -72,10 +73,10 @@ post_class: post-template
     {% if page.categories.size > 0 or page.tags.size > 0 %}
     <div class="post-footer-tags">
         {% for cat in page.categories %}
-            <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
+        <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
         {% endfor %}
         {% for tag in page.tags %}
-            <a href="{{ site.baseurl }}/tags#{{ tag | slugify }}" class="post-tag">#{{ tag }}</a>
+        <a href="{{ site.baseurl }}/tags#{{ tag | slugify }}" class="post-tag">#{{ tag }}</a>
         {% endfor %}
     </div>
     {% endif %}
@@ -89,14 +90,12 @@ post_class: post-template
             title="Compartilhar no Twitter">
             <i class="bi bi-twitter-x"></i>
         </a>
-        <a target="_blank"
-            href="https://facebook.com/sharer.php?u={{ page.url | absolute_url }}"
+        <a target="_blank" href="https://facebook.com/sharer.php?u={{ page.url | absolute_url }}"
             onclick="window.open(this.href,'facebook-share','width=550,height=435');return false;"
             title="Compartilhar no Facebook">
             <i class="bi bi-facebook"></i>
         </a>
-        <a target="_blank"
-            href="https://bsky.app/intent/compose?text={{ page.title }} {{ page.url | absolute_url }}"
+        <a target="_blank" href="https://bsky.app/intent/compose?text={{ page.title }} {{ page.url | absolute_url }}"
             onclick="window.open(this.href,'bluesky-share','width=550,height=435');return false;"
             title="Compartilhar no Bluesky">
             <i class="bi bi-bluesky"></i>
