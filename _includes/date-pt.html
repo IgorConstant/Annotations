@@ -1,0 +1,6 @@
+{% assign day = include.date | date: "%d" %}
+{% assign month_index = include.date | date: "%-m" | minus: 1 %}
+{% assign year = include.date | date: "%Y" %}
+{% assign months = "janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro" | split: "," %}
+{% assign abbreviated_months = "jan,fev,mar,abr,mai,jun,jul,ago,set,out,nov,dez" | split: "," %}
+{% if include.format == "long" %}{{ day }} de {{ months[month_index] }} de {{ year }}{% else %}{{ day }} {{ abbreviated_months[month_index] }}{% unless include.format == "day-month" %} {{ year }}{% endunless %}{% endif %}

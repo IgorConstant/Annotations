@@ -57,7 +57,7 @@ title: arquivo
         </a>
         <div class="archive-post-info">
           <div class="archive-post-meta">
-            <span class="archive-date">{{ post.date | date: "%d %b" }}</span>
+            <span class="archive-date">{% include date-pt.html date=post.date format="day-month" %}</span>
             {% for cat in post.categories %}
               <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
             {% endfor %}

@@ -6,7 +6,7 @@ title: o som do silêncio.
 {% if page.url == "/" %}
 
 {% assign hero_post = site.posts | first %}
-{% assign other_posts = site.posts | slice: 1, 8 %}
+{% assign other_posts = site.posts | slice: 1, 4 %}
 
 <!-- Hero Post -->
 <section class="home-hero">
@@ -27,7 +27,7 @@ title: o som do silêncio.
         </div>
         <h1 class="home-hero-title">{{ hero_post.title }}</h1>
         <p class="home-hero-desc">{{ hero_post.description }}</p>
-        <span class="home-hero-date">{{ hero_post.date | date: "%d %b %Y" }}</span>
+        <span class="home-hero-date">{% include date-pt.html date=hero_post.date %}</span>
       </div>
     </div>
   </a>
@@ -50,7 +50,7 @@ title: o som do silêncio.
           {% for cat in post.categories %}
             <a href="{{ site.baseurl }}/category/{{ cat | slugify }}/" class="archive-cat">{{ cat }}</a>
           {% endfor %}
-          <span class="archive-date">{{ post.date | date: "%d %b %Y" }}</span>
+          <span class="archive-date">{% include date-pt.html date=post.date %}</span>
         </div>
         <h2 class="home-post-title">
           <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -68,4 +68,3 @@ title: o som do silêncio.
 </div>
 
 {% endif %}
-

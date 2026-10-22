@@ -23,7 +23,7 @@ post_class: post-template
         <span>{{ author.display_name }}</span>
         <span class="post-header-dot">·</span>
         {% endif %}
-        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d %b %Y" }}</time>
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% include date-pt.html date=page.date %}</time>
         <span class="post-header-dot">·</span>
         <span class="reading-time">{{ content | number_of_words | divided_by: 200 | plus: 1 }} min de leitura</span>
     </div>
