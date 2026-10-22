@@ -436,6 +436,14 @@ pre.lineno {
   font-size: 150%;
 }
 
+.mediumnavigation .navbar-brand {
+  font-size: 15px;
+}
+
+.mediumnavigation .navbar-nav .nav-link {
+  font-size: 13px;
+}
+
 /* We need to add display:inline in order to align the '>>' of the 'read more' link */
 .post-excerpt p {
   display: inline;
