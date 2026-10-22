@@ -141,18 +141,20 @@
 
         <!-- Explore Section
 ================================================== -->
-        <div class="explore-section">
-            <div class="explore-inner">
-                <span class="explore-label">explorar.</span>
-                <div class="explore-cats">
-                    {% for category in site.categories %}
-                    <a class="explore-cat-pill" href="{{ site.baseurl }}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">
-                        {{ category[0] }}<span class="explore-cat-count">{{ category[1].size }}</span>
-                    </a>
-                    {% endfor %}
+        {% unless page.layout == "archive" or page.url == "/about/" %}
+            <div class="explore-section">
+                <div class="explore-inner">
+                    <span class="explore-label">explorar.</span>
+                    <div class="explore-cats">
+                        {% for category in site.categories %}
+                        <a class="explore-cat-pill" href="{{ site.baseurl }}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">
+                            {{ category[0] }}<span class="explore-cat-count">{{ category[1].size }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endunless %}
 
         <!-- Begin Footer
 ================================================== -->

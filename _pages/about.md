@@ -32,8 +32,4 @@ comments: false
     <p>Obrigado por ler até aqui. E sejam bem-vindos.</p>
   </div>
 
-  <div class="about-footer">
-    <a href="{{ '/archive/' | relative_url }}" class="about-cta">explorar os textos →</a>
-  </div>
-
 </div>
